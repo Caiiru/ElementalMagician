@@ -8,4 +8,6 @@ public class Recipe : ScriptableObject
     public Element secondElement;
 
     public SkillStats _skill;
+
+    public GameObject _skillGO;
 }

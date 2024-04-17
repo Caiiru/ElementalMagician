@@ -147,12 +147,12 @@ namespace TarodevController
 
         private void HandleDirection()
         {
-            if (_frameInput.Move.x == 0)
+            if (_frameInput.Move.x == 0 || !_stats.canMove)
             {
                 var deceleration = _grounded ? _stats.GroundDeceleration : _stats.AirDeceleration;
                 _frameVelocity.x = Mathf.MoveTowards(_frameVelocity.x, 0, deceleration * Time.fixedDeltaTime);
             }
-            else
+            else if(_stats.canMove)
             {
                 _frameVelocity.x = Mathf.MoveTowards(_frameVelocity.x, _frameInput.Move.x * _stats.MaxSpeed, _stats.Acceleration * Time.fixedDeltaTime);
             }

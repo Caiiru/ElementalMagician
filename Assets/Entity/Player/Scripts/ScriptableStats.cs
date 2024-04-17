@@ -19,6 +19,9 @@ namespace TarodevController
 
         [Header("MOVEMENT")] [Tooltip("The top horizontal movement speed")]
         public float MaxSpeed = 14;
+        
+        [Tooltip("The condition for player can walk and jump")]
+        public bool canMove = true;
 
         [Tooltip("The player's capacity to gain horizontal speed")]
         public float Acceleration = 120;

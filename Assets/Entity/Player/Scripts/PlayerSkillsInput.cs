@@ -4,17 +4,18 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerSkillsInput : MonoBehaviour
-{
-    // Start is called before the first frame update
-    private GameObject InputElementsDisplay;
+{ 
     private Element _element;
-
-    [SerializeField] private Element firstElement;
-    [SerializeField] private Element secondElement;
+    private List<Recipe> recipes;
+    public GameObject emptySkill;
+    #region Display
+    private GameObject InputElementsDisplay;
+    private Element firstElement;
+    private Element secondElement;
 
     private SpriteRenderer firstElementSprite;
     private SpriteRenderer secondElementSprite;
-    
+    #endregion
     public event Action<Element,int> elementAdded;
     void Start()
     {
@@ -22,7 +23,11 @@ public class PlayerSkillsInput : MonoBehaviour
         firstElementSprite = InputElementsDisplay.transform.GetChild(0).transform.GetChild(1)
             .GetComponent<SpriteRenderer>();
         secondElementSprite = InputElementsDisplay.transform.GetChild(1).transform.GetChild(1)
-            .GetComponent<SpriteRenderer>(); 
+            .GetComponent<SpriteRenderer>();
+
+        recipes = ElementManager.GetInstance().recipes;
+        
+        resetDisplay();
     }
 
     // Update is called once per frame
@@ -49,7 +54,12 @@ public class PlayerSkillsInput : MonoBehaviour
             addElement(_element);
         }
 
-        
+        if (Input.GetKeyDown(KeyCode.V))
+        {
+            CheckRecipes();
+        }
+
+
     }
 
     void addElement(Element _element)
@@ -84,6 +94,21 @@ public class PlayerSkillsInput : MonoBehaviour
         firstElementSprite.color = Color.clear;
         secondElementSprite.color = Color.clear;
     }
+
+    void CheckRecipes()
+    {
+        for (int i = 0; i < recipes.Count; i++)
+        {
+            if (firstElement == recipes[i].firstElement && secondElement == recipes[i].secondElement)
+            {
+                print("Match");
+                var _skill = Instantiate(recipes[i]._skillGO);
+                _skill.transform.position = transform.position; 
+                break;
+            } 
+        }
+        resetDisplay();
+    } 
     
     public interface IPlayerSkillsInput
     {
