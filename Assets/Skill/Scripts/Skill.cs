@@ -10,13 +10,19 @@ public abstract class Skill : MonoBehaviour
      public Vector2 _direction;
      public Vector2 _velocity;
      public virtual void Start()
-     {
-          Create();
-     }
-
-     public virtual void Create()
      { 
           
+     }
+
+     public virtual void Update()
+     {
+          Execute();
+     }
+
+     public virtual void Create(Vector2 startPosition, Vector2 direction)
+     {
+          
+        
      }
 
      public virtual void Execute()

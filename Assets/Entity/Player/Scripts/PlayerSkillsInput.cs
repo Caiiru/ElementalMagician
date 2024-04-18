@@ -1,13 +1,16 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TarodevController;
 using UnityEngine;
 
 public class PlayerSkillsInput : MonoBehaviour
 { 
     private Element _element;
     private List<Recipe> recipes;
-    public GameObject emptySkill;
+ 
+    public Transform _skillSpawnPosition;
+    
     #region Display
     private GameObject InputElementsDisplay;
     private Element firstElement;
@@ -27,6 +30,7 @@ public class PlayerSkillsInput : MonoBehaviour
 
         recipes = ElementManager.GetInstance().recipes;
         
+        
         resetDisplay();
     }
 
@@ -38,23 +42,23 @@ public class PlayerSkillsInput : MonoBehaviour
 
     void GatherElementInput()
     {
-        if (Input.GetKeyDown(KeyCode.Z)) // Air
+        if (Input.GetKeyDown(KeyCode.A)) // Air
         {
             _element = ElementManager.GetInstance().elements[0];
             addElement(_element);
-        }if (Input.GetKeyDown(KeyCode.X)) // Fire
+        }if (Input.GetKeyDown(KeyCode.S)) // Fire
         {
             _element = ElementManager.GetInstance().elements[1];
             addElement(_element);
         }
-        if (Input.GetKeyDown(KeyCode.C)) // Water
+        if (Input.GetKeyDown(KeyCode.D)) // Water
         {
             
             _element = ElementManager.GetInstance().elements[2];
             addElement(_element);
         }
 
-        if (Input.GetKeyDown(KeyCode.V))
+        if (Input.GetKeyDown(KeyCode.F))
         {
             CheckRecipes();
         }
@@ -102,8 +106,20 @@ public class PlayerSkillsInput : MonoBehaviour
             if (firstElement == recipes[i].firstElement && secondElement == recipes[i].secondElement)
             {
                 print("Match");
-                var _skill = Instantiate(recipes[i]._skillGO);
-                _skill.transform.position = transform.position; 
+                var _skill = Instantiate(recipes[i]._skillGO); 
+                /*
+                if (_aimDirection.x < 0)
+                {
+                    _skillSpawnPosition.forward = new Vector3(0, -90, 0);
+                }
+                else
+                {
+                    
+                    _skillSpawnPosition.forward = new Vector3(0, 90, 0);
+                }
+                */
+                var aimingDirection = transform.GetComponentInParent<PlayerController>().getStats().aimingDirection;
+                _skill.GetComponent<Skill>().Create(_skillSpawnPosition.position,aimingDirection);
                 break;
             } 
         }

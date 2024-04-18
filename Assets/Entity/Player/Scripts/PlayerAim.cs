@@ -24,13 +24,13 @@ public class PlayerAim : MonoBehaviour
 
     void GatherInput()
     {
-        if (Input.GetKey(KeyCode.S) && !isAiming)
+        if (Input.GetKey(KeyCode.Z) && !isAiming)
         {
             isAiming = true;
             _stats.canMove = false;
         }
 
-        else if (Input.GetKeyUp(KeyCode.S) && isAiming)
+        else if (Input.GetKeyUp(KeyCode.Z) && isAiming)
         {
             isAiming = false;
             _stats.canMove = true;
@@ -39,8 +39,17 @@ public class PlayerAim : MonoBehaviour
 
     private void Aim()
     {
-        Vector3 aimingDirection = new Vector3(Input.GetAxisRaw("Vertical"),
-            Input.GetAxisRaw("Horizontal"),0);
-        transform.LookAt(transform.position + aimingDirection);
+        Vector3 inputDirection = new Vector3(Input.GetAxisRaw("Horizontal"),
+            Input.GetAxisRaw("Vertical"),0);
+        Vector3 targetPosition = (transform.position + inputDirection);
+        _stats.aimingDirection = inputDirection;
+        Debug.DrawLine(transform.position,targetPosition, Color.red);
+
+        //float newAngle = Mathf.Atan2(targetPosition.y, targetPosition.x) * Mathf.Rad2Deg;
+        //var currentAngle = transform.rotation.eulerAngles.z;
+        //float angularDistance = newAngle - currentAngle;   
+        //transform.rotation = Quaternion.Euler(0,0,newAngle);
+        //float angle = Mathf.Atan2()
+        //transform.rotation = Quaternion.FromToRotation(Vector3.up, targetPosition - transform.position);
     }
 }

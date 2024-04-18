@@ -17,8 +17,9 @@ MonoBehaviour:
     m_Bits: 0
   SnapInput: 1
   VerticalDeadZoneThreshold: 0.3
-  HorizontalDeadZoneThreshold: 0.1
+  HorizontalDeadZoneThreshold: 0.424
   MaxSpeed: 14
+  canMove: 1
   Acceleration: 120
   GroundDeceleration: 60
   AirDeceleration: 30
@@ -30,3 +31,4 @@ MonoBehaviour:
   JumpEndEarlyGravityModifier: 3
   CoyoteTime: 0.15
   JumpBuffer: 0.2
+  aimingDirection: {x: -1, y: 0}

@@ -1657,10 +1657,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 8654052855529449085, guid: 88097b566ad1fdd489d7ee77465b57aa, type: 3}
-      propertyPath: _stats
+    - target: {fileID: 4985475824374016665, guid: 88097b566ad1fdd489d7ee77465b57aa, type: 3}
+      propertyPath: _skillSpawnPosition
       value: 
-      objectReference: {fileID: 11400000, guid: 05e6a06c5af93134ab98ff12e2c27265, type: 2}
+      objectReference: {fileID: 2125590597}
+    - target: {fileID: 6252204768273623108, guid: 88097b566ad1fdd489d7ee77465b57aa, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: 8418204508859773708, guid: 0000000000000000d000000000000000, type: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2303,6 +2307,11 @@ Transform:
   - {fileID: 1441678044}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &2125590597 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4340208518902122929, guid: 88097b566ad1fdd489d7ee77465b57aa, type: 3}
+  m_PrefabInstance: {fileID: 464404008}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

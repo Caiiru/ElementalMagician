@@ -6,4 +6,5 @@ using UnityEngine;
 public class Skill_DamageStats:SkillStats
 {
     public int SkillDamage;
+    public int SkillSpeed;
 }

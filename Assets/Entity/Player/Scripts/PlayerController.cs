@@ -29,6 +29,7 @@ namespace TarodevController
             _col = GetComponent<CapsuleCollider2D>();
 
             _cachedQueryStartInColliders = Physics2D.queriesStartInColliders;
+            _stats.aimingDirection = new Vector2(1, 0);
         }
 
         private void Update()
@@ -154,6 +155,7 @@ namespace TarodevController
             }
             else if(_stats.canMove)
             {
+                _stats.aimingDirection = _frameInput.Move;
                 _frameVelocity.x = Mathf.MoveTowards(_frameVelocity.x, _frameInput.Move.x * _stats.MaxSpeed, _stats.Acceleration * Time.fixedDeltaTime);
             }
         }
@@ -180,6 +182,11 @@ namespace TarodevController
 
         private void ApplyMovement() => _rb.velocity = _frameVelocity;
 
+        public ScriptableStats getStats()
+        {
+            return _stats;
+        }
+        
 #if UNITY_EDITOR
         private void OnValidate()
         {
