@@ -16,3 +16,4 @@ MonoBehaviour:
   SkillCooldown: 2
   SkillDamage: 5
   SkillSpeed: 15
+  damageElement: {fileID: 11400000, guid: 1ae1d9c3b0c168d45b259eceefd0ef73, type: 2}

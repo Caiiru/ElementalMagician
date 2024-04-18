@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -21,12 +22,7 @@ public class FireballScript : Skill_DamageSkill
         _rb.AddForce(_velocity, ForceMode2D.Impulse);
     }
 
-
-    public override void Start()
-    {
-        base.Start();
  
-    }
 
     public override void Update()
     {
@@ -34,14 +30,13 @@ public class FireballScript : Skill_DamageSkill
         Execute();
     }
 
-    public override void Execute()
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        base.Execute();
-        /*
-        transform.position = new Vector2(transform.position.x,
-            transform.position.y) + _velocity * Time.deltaTime;
-        */
-        //_rb.velocity += _velocity * Time.fixedDeltaTime;
-
+        if (other.transform.GetComponent<Entity>())
+        {
+            var otherEntity = other.transform.GetComponent<Entity>();
+            otherEntity.takeDamage(_stats.SkillDamage,_stats.damageElement);
+        }
+        Destroy(this.gameObject);
     }
 }

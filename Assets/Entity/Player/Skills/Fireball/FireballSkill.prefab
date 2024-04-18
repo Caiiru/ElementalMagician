@@ -93,9 +93,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6400066385263837802}
+  - component: {fileID: 8576415951236942785}
   - component: {fileID: 1433217196601968988}
   - component: {fileID: 4009044456502110575}
-  - component: {fileID: 8576415951236942785}
   m_Layer: 6
   m_Name: FireballSkill
   m_TagString: Skill
@@ -119,6 +119,23 @@ Transform:
   - {fileID: 183489710876714109}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8576415951236942785
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3954754600004843324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2f335de542a46e43a2ff25d9efcd5a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SkillName: Fireball
+  SkillCooldown: 2
+  _direction: {x: 0, y: 0}
+  _velocity: {x: 0, y: 0}
+  _stats: {fileID: 11400000, guid: 2f8e9562580e49744a7b3d454d1d688b, type: 2}
 --- !u!50 &1433217196601968988
 Rigidbody2D:
   serializedVersion: 4
@@ -175,27 +192,9 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.16082585
---- !u!114 &8576415951236942785
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3954754600004843324}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e2f335de542a46e43a2ff25d9efcd5a3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SkillName: Fireball
-  SkillCooldown: 2
-  _direction: {x: 0, y: 0}
-  _velocity: {x: 0, y: 0}
-  SkillDamage: 0
-  _stats: {fileID: 11400000, guid: 2f8e9562580e49744a7b3d454d1d688b, type: 2}

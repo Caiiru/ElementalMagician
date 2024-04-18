@@ -3,19 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyEntity : Entity
-{ 
+{
+    [Header("Enemy Entity Settings")]
+    public EnemyStats EnemyStats;
     public override void Start()
     {
-        base.Start(); 
+        setStats(EnemyStats);
+        base.Start();
+        var spriteRenderer = transform.GetChild(0).GetComponent<SpriteRenderer>();
+        spriteRenderer.sprite = EnemyStats.enemySprite;
+        Vector2 spriteSize = spriteRenderer.sprite.bounds.size;
+        gameObject.GetComponent<BoxCollider2D>().size = spriteSize;
+        //gameObject.GetComponent<BoxCollider2D>().offset = new Vector2((spriteSize.x / 2), 0);
     }
-
-    public override void takeDamage(int _damage, Element damageType)
-    {
-        base.takeDamage(_damage, damageType); 
-    }
-
-    public override int CalculateDamage(int value, Element _type)
-    {
-        return base.CalculateDamage(value, _type);
-    }
+ 
 }

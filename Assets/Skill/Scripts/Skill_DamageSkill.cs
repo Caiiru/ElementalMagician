@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Skill_DamageSkill : Skill
-{
-    public int SkillDamage;
+{ 
     public Skill_DamageStats _stats;
  
 
