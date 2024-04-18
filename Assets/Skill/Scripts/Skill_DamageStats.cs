@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu]
+[CreateAssetMenu(menuName = "Skill/Damage/Stats")]
 public class Skill_DamageStats:SkillStats
 {
     public int SkillDamage;

@@ -3,19 +3,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ElementManager : MonoBehaviour
+public partial class ElementManager : MonoBehaviour
 {
     public List<Element> elements;
     public List<Recipe> recipes;
-    void Start()
+    public Element noElement;
+    public Element getElementByEnum(EntityElement _element)
     {
-        
-    }
+        var elementToReturn = noElement;
+        if (_element == EntityElement.AIR) elementToReturn = elements[0];
+        else if (_element == EntityElement.FIRE) elementToReturn = elements[1];
+        else if (_element == EntityElement.WATER) elementToReturn = elements[2];
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        return elementToReturn;
     }
     
     

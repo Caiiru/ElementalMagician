@@ -9,10 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0c6fa7f8cf9043a48ce0366ee39d891b, type: 3}
-  m_Name: Fireball_Stats
+  m_Script: {fileID: 11500000, guid: f56ee6fc2b05659458b1f84140787de8, type: 3}
+  m_Name: Player
   m_EditorClassIdentifier: 
-  SkillName: Fireball
-  SkillCooldown: 2
-  SkillDamage: 5
-  SkillSpeed: 15
+  max_HP: 10
+  current_HP: 10
+  EntityElement: 0

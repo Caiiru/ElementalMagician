@@ -9,12 +9,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1544650614272011795}
+  - component: {fileID: 5619459609708250227}
   - component: {fileID: 1544650614272011792}
   - component: {fileID: 1544650614272011793}
   - component: {fileID: 1544650614272011794}
-  m_Layer: 6
+  m_Layer: 3
   m_Name: Player Controller
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -36,6 +37,19 @@ Transform:
   - {fileID: 4424514318508180623}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5619459609708250227
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1544650614272011804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e08da41133f95b34a8c6dceb17d9b7e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stats: {fileID: 11400000, guid: 0063b48903f11a94093b4af3693e6cfb, type: 2}
 --- !u!114 &1544650614272011792
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -120,7 +134,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8909253270800950250}
-  m_Layer: 6
+  m_Layer: 3
   m_Name: ElementVisual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -154,7 +168,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5011031432273956049}
   - component: {fileID: 5424125580328884826}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Hat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -239,7 +253,7 @@ GameObject:
   - component: {fileID: 2969068311587289282}
   - component: {fileID: 2969068311587289284}
   - component: {fileID: 2969068311587289283}
-  m_Layer: 6
+  m_Layer: 3
   m_Name: DashRing Particles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5127,7 +5141,7 @@ GameObject:
   - component: {fileID: 2969068311631949166}
   - component: {fileID: 2969068311631949152}
   - component: {fileID: 2969068311631949167}
-  m_Layer: 6
+  m_Layer: 3
   m_Name: Move Particles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9955,7 +9969,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2969068311871471201}
-  m_Layer: 6
+  m_Layer: 3
   m_Name: Particles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9993,7 +10007,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2969068311962969430}
   - component: {fileID: 2969068311962969431}
-  m_Layer: 6
+  m_Layer: 3
   m_Name: Visual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10056,7 +10070,7 @@ GameObject:
   - component: {fileID: 2969068312368229176}
   - component: {fileID: 2969068312368229178}
   - component: {fileID: 2969068312368229177}
-  m_Layer: 6
+  m_Layer: 3
   m_Name: Land Particles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14944,7 +14958,7 @@ GameObject:
   - component: {fileID: 2969068312440364620}
   - component: {fileID: 2969068312440364622}
   - component: {fileID: 2969068312440364621}
-  m_Layer: 6
+  m_Layer: 3
   m_Name: Dash Particles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19774,7 +19788,7 @@ GameObject:
   - component: {fileID: 2969068312619346369}
   - component: {fileID: 2969068312619346371}
   - component: {fileID: 2969068312619346370}
-  m_Layer: 6
+  m_Layer: 3
   m_Name: Jump Particles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24663,7 +24677,7 @@ GameObject:
   - component: {fileID: 2969068312669941332}
   - component: {fileID: 2969068312669941334}
   - component: {fileID: 2969068312669941333}
-  m_Layer: 6
+  m_Layer: 3
   m_Name: Launch Particles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29549,7 +29563,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2969068312704584583}
-  m_Layer: 6
+  m_Layer: 3
   m_Name: Dash Ring
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29583,7 +29597,7 @@ GameObject:
   - component: {fileID: 2969068313154050965}
   - component: {fileID: 2969068313154050967}
   - component: {fileID: 2969068313154050966}
-  m_Layer: 6
+  m_Layer: 3
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29688,7 +29702,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2969068313184073012}
   - component: {fileID: 2969068313184073013}
-  m_Layer: 6
+  m_Layer: 3
   m_Name: TrailRenderer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29834,7 +29848,7 @@ GameObject:
   - component: {fileID: 2969068313322230366}
   - component: {fileID: 2969068313322230352}
   - component: {fileID: 2969068313322230367}
-  m_Layer: 6
+  m_Layer: 3
   m_Name: Double Jump Particles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34721,7 +34735,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1417272586761909686}
   - component: {fileID: 962913070673639275}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: FirstElement_Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34805,7 +34819,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7568962984948086205}
   - component: {fileID: 4328211493357290550}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: FirstElement_Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34889,7 +34903,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8723928853918631008}
   - component: {fileID: 173135986538117045}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Eyes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34973,7 +34987,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8099966130597894648}
   - component: {fileID: 4395343280272802509}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: SecondElement_Border
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35057,7 +35071,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4880404105251022299}
   - component: {fileID: 8580195962967188033}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: FirstElement_Border
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35140,7 +35154,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 104562880140261960}
-  m_Layer: 6
+  m_Layer: 3
   m_Name: SecondElement
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35174,7 +35188,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9217587824873017683}
   - component: {fileID: 2772950971508049886}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35257,10 +35271,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4340208518902122929}
-  m_Layer: 6
+  m_Layer: 3
   m_Name: SpawnPosition
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 8418204508859773708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -35272,13 +35286,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6252204768273623108}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.768, y: 0.752, z: 0}
+  m_LocalRotation: {x: -0, y: 0.7071067, z: -0, w: 0.7071069}
+  m_LocalPosition: {x: 0.7680001, y: 0.752, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 333634853819226423}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!1 &6551633851677368767
 GameObject:
   m_ObjectHideFlags: 0
@@ -35289,7 +35303,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1272481895322309461}
   - component: {fileID: 268296290797030751}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: HandWand_Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35372,7 +35386,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4003724396242896827}
-  m_Layer: 6
+  m_Layer: 3
   m_Name: Art
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35408,7 +35422,7 @@ GameObject:
   m_Component:
   - component: {fileID: 333634853819226423}
   - component: {fileID: 8654052855529449085}
-  m_Layer: 6
+  m_Layer: 3
   m_Name: Aim
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35456,7 +35470,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4424514318508180623}
   - component: {fileID: 4985475824374016665}
-  m_Layer: 6
+  m_Layer: 3
   m_Name: Skills
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35491,6 +35505,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f39673caea22f734598ab04a89a68942, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _skillSpawnPosition: {fileID: 4340208518902122929}
 --- !u!1 &8860335677469237078
 GameObject:
   m_ObjectHideFlags: 0
@@ -35500,7 +35515,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2129279126431536381}
-  m_Layer: 6
+  m_Layer: 3
   m_Name: FirstElement
   m_TagString: Untagged
   m_Icon: {fileID: 0}
