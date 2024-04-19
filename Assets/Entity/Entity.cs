@@ -9,8 +9,8 @@ using UnityEngine.Serialization;
 public class Entity : MonoBehaviour
 {
     private EntityStats stats;
-    private int max_HP;
-    private int current_HP;
+    [SerializeField]private int max_HP;
+    [SerializeField] private int current_HP;
     
     #region Components
 
@@ -27,10 +27,11 @@ public class Entity : MonoBehaviour
 
     #endregion
 
-    private void Awake()
+    public virtual void Awake()
     {
         _rb = GetComponent<Rigidbody2D>();
         _coll = GetComponent<Collider2D>(); 
+       
     }
 
     public virtual void Start()
@@ -82,6 +83,7 @@ public class Entity : MonoBehaviour
         
         return valueToReturn;
     }
+    
 
     public void Update()
     { 
@@ -95,5 +97,10 @@ public class Entity : MonoBehaviour
     public virtual void setStats(EntityStats _stats)
     {
         stats = _stats;
+    }
+
+    public int getCurrentHealth()
+    {
+        return current_HP;
     }
 }

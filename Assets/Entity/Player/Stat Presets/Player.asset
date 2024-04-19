@@ -15,3 +15,5 @@ MonoBehaviour:
   max_HP: 10
   current_HP: 10
   EntityElement: 0
+  elementalWeakness: 0
+  elementalResistance: 0
