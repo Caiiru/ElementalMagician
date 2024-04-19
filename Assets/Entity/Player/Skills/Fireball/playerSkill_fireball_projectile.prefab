@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 1433217196601968988}
   - component: {fileID: 4009044456502110575}
   m_Layer: 6
-  m_Name: FireballSkill
+  m_Name: playerSkill_fireball_projectile
   m_TagString: Skill
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
