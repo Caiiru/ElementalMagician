@@ -5,7 +5,7 @@ using UnityEngine;
 public abstract class Skill : MonoBehaviour
 {
      public string SkillName;
-     public int SkillCooldown;
+     public float SkillCooldown;
 
      public Vector2 _direction;
      public Vector2 _velocity;
@@ -15,8 +15,7 @@ public abstract class Skill : MonoBehaviour
      }
 
      public virtual void Update()
-     {
-          Execute();
+     { 
      }
 
      public virtual void Create(Vector2 startPosition, Vector2 direction)

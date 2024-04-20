@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0c6fa7f8cf9043a48ce0366ee39d891b, type: 3}
-  m_Name: AirballStats
+  m_Name: WaterJetStats
   m_EditorClassIdentifier: 
-  SkillName: Airball
-  SkillCooldown: 2
-  SkillDamage: 3
-  SkillSpeed: 7
-  damageElement: {fileID: 11400000, guid: 8c05d27a78207834d9aecb2afee901be, type: 2}
+  SkillName: Waterjet
+  SkillCooldown: 1
+  SkillDamage: 2
+  SkillSpeed: 5
+  damageElement: {fileID: 11400000, guid: 1d7eb1f522c4dad43abc451088f53d17, type: 2}

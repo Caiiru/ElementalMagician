@@ -10,12 +10,17 @@ public class Skill_DamageSkill : Skill
 
     public override void Start()
     {
-        base.Start(); 
+        base.Start();
+       
+        
     }
 
     public override void Create(Vector2 startPosition, Vector2 direction)
     {
         base.Create(startPosition, direction);
+        SkillName = _stats.SkillName;
+        SkillCooldown = _stats.SkillCooldown;
+        
     }
 
     public override void Execute()
@@ -25,7 +30,6 @@ public class Skill_DamageSkill : Skill
 
     public override void Update()
     {
-        base.Update();
-        Execute();
+        base.Update(); 
     }
 }
