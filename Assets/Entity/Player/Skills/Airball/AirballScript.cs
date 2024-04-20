@@ -13,17 +13,24 @@ public class AirballScript : Skill_DamageSkill
       _rb = GetComponent<Rigidbody2D>();
       _coll = GetComponent<Collider2D>(); 
         
-        
+      if (direction.x != 1)
+      {
+         transform.localScale = new Vector3(-1, 1, 1);
+      }
       _direction = direction;
       transform.position = spawnPoint.position; 
       _velocity = _direction * _stats.SkillSpeed;
       
       _rb.AddForce(_velocity, ForceMode2D.Impulse);
    }
+   
+   
    public override void Update()
    {
       base.Update();
       Execute();
+      
+      _rb.AddForce(_velocity,ForceMode2D.Force);
    }
 
    private void OnTriggerEnter2D(Collider2D other)

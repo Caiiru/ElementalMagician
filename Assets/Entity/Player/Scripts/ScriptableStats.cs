@@ -58,5 +58,7 @@ namespace TarodevController
 
         [Header("Aim")] [Tooltip("The direction that player is aiming")]
         public Vector2 aimingDirection;
+        
+        public bool isAiming;
     }
 }

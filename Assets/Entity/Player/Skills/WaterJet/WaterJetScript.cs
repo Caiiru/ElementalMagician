@@ -4,10 +4,15 @@ using System.Collections.Generic;
 using TarodevController;
 using UnityEngine;
 
+/*    TO DO LATER:
+      Limite de cast
+
+*/
 public class WaterJetScript : Skill_DamageSkill
 {
    private bool wasCreated = false;
    private bool canDamage = false;
+   private ScriptableStats playerStats;
 
    [SerializeField]private float skillcooldownTime;
 
@@ -21,21 +26,27 @@ public class WaterJetScript : Skill_DamageSkill
    Transform _spawnPoint; 
    public override void Create(Transform spawnPoint, Vector2 direction)
    {
+
+      playerStats = GameManager.getInstance().getPlayerEntity()
+         .gameObject.GetComponent<PlayerController>().getStats();
+      
       _spawnPoint = spawnPoint;
       changePositionAndRotation(spawnPoint.position,direction);
       base.Create(spawnPoint, direction);
       wasCreated = true;
-      skillcooldownTime = SkillCooldown;
-      print("Waterjet cooldown: " + skillcooldownTime);
+      skillcooldownTime = SkillCooldown; 
       _particleSystem.Play();
    }
    
    public override void Execute()
    {
       base.Execute();
-      if (GameManager.getInstance().getPlayerEntity().gameObject.GetComponent<PlayerController>().getStats().canMove)
-         GameManager.getInstance().getPlayerEntity()
-               .gameObject.GetComponent<PlayerController>().getStats().canMove = false;
+      if (playerStats.canMove)
+      {
+         playerStats.isAiming = true;
+         playerStats.canMove = false;
+      }
+
       if (Input.GetKey(KeyCode.F))
       {
          changePositionAndRotation(_spawnPoint.position, 
@@ -60,8 +71,8 @@ public class WaterJetScript : Skill_DamageSkill
       }
       else
       {
-         GameManager.getInstance().getPlayerEntity()
-            .gameObject.GetComponent<PlayerController>().getStats().canMove = true;
+         playerStats.isAiming = false;
+         playerStats.canMove = true;
          Destroy(this.gameObject);
       }
    }
