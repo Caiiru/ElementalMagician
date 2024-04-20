@@ -7,15 +7,15 @@ public class AirballScript : Skill_DamageSkill
 {
    private Rigidbody2D _rb;
    private Collider2D _coll; 
-   public override void Create(Vector2 startPosition, Vector2 direction)
+   public override void Create(Transform spawnPoint, Vector2 direction)
    {
-      base.Create(startPosition, direction);
+      base.Create(spawnPoint, direction);
       _rb = GetComponent<Rigidbody2D>();
       _coll = GetComponent<Collider2D>(); 
         
         
       _direction = direction;
-      transform.position = startPosition; 
+      transform.position = spawnPoint.position; 
       _velocity = _direction * _stats.SkillSpeed;
       
       _rb.AddForce(_velocity, ForceMode2D.Impulse);

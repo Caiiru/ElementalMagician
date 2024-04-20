@@ -5,5 +5,5 @@ using UnityEngine;
 public class SkillStats : ScriptableObject
 {
     public string SkillName;
-    public int SkillCooldown;
+    public float SkillCooldown;
 }

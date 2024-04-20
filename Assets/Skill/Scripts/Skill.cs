@@ -18,7 +18,7 @@ public abstract class Skill : MonoBehaviour
      { 
      }
 
-     public virtual void Create(Vector2 startPosition, Vector2 direction)
+     public virtual void Create(Transform spawnPoint, Vector2 direction)
      {
           
         

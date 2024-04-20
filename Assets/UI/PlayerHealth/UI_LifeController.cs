@@ -17,19 +17,7 @@ public class UI_LifeController : MonoBehaviour
     public List<GameObject> hearts;
     void Start()
     { 
-      
-        _player = GameManager.getInstance().getPlayerEntity();
-        if (_player)
-        {  
-            howMuchHearts = (GameManager.getInstance().getPlayerEntity().playerStats.max_HP)/2;
-        }
-        CreateHeart(howMuchHearts);
-    }
-
-    private void OnEnable()
-    {
-        
-        var _entity = GameManager.getInstance().getPlayerEntity();
+        _entity = GameManager.getInstance().getPlayerEntity();
         if (_entity)
         {
             _playerEntity = _entity.transform.GetComponentInParent<IPlayerEntity>();
@@ -38,6 +26,23 @@ public class UI_LifeController : MonoBehaviour
         {
             _playerEntity.playerTakeDamage += UpdateHearts;
         }
+        
+       
+        _player = GameManager.getInstance().getPlayerEntity();
+        if (_player)
+        {  
+            howMuchHearts = (GameManager.getInstance().getPlayerEntity().playerStats.max_HP)/2;
+        }
+        CreateHeart(howMuchHearts);
+    }
+
+   
+
+    private PlayerEntity _entity;
+
+    private void OnEnable()
+    { 
+        
         
     }
     private void OnDisable()

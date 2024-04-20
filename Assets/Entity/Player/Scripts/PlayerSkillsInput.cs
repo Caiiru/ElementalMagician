@@ -119,7 +119,7 @@ public class PlayerSkillsInput : MonoBehaviour
                 }
                 */
                 var aimingDirection = transform.GetComponentInParent<PlayerController>().getStats().aimingDirection;
-                _skill.GetComponent<Skill>().Create(_skillSpawnPosition.position,aimingDirection);
+                _skill.GetComponent<Skill>().Create(_skillSpawnPosition,aimingDirection);
                 break;
             } 
         }
