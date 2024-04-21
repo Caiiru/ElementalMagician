@@ -74,7 +74,7 @@ public class PlayerSkillsInput : MonoBehaviour
         {
             firstElement = _element;
             position = 1;
-            firstElementSprite.color = _element.PlayerDisplayColor;
+            firstElementSprite.color = _element.ElementColor;
             elementAdded?.Invoke(_element,position);
             return;
         }
@@ -82,7 +82,7 @@ public class PlayerSkillsInput : MonoBehaviour
         {
             secondElement = _element;
             position = 2;
-            secondElementSprite.color = _element.PlayerDisplayColor;
+            secondElementSprite.color = _element.ElementColor;
             elementAdded?.Invoke(_element,position);   
             return;
         }
@@ -105,7 +105,6 @@ public class PlayerSkillsInput : MonoBehaviour
         {
             if (firstElement == recipes[i].firstElement && secondElement == recipes[i].secondElement)
             {
-                print("Match");
                 var _skill = Instantiate(recipes[i]._skillGO); 
                 /*
                 if (_aimDirection.x < 0)
