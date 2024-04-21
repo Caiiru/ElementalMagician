@@ -62,6 +62,9 @@ public class EnemyEntity : Entity
                 
                 StartCoroutine(PopupTextDamage(_damage,text,_time));
                 LeanTween.moveY(text, transform.position.y + spawnYOffset + elevateY, _time);
+                var scale = text.transform.localScale;
+                text.transform.localScale = new Vector3(0, 0, 0);
+                LeanTween.scale(text, scale/2, _time);
                 break;
             }
         }
@@ -82,6 +85,7 @@ public class EnemyEntity : Entity
     {
         yield return new WaitForSeconds(_time);
         obj.SetActive(false);
-        
+        obj.transform.localScale = new Vector3(1, 1, 1);
+
     }
 }
