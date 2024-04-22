@@ -9,11 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0c6fa7f8cf9043a48ce0366ee39d891b, type: 3}
-  m_Name: WaterJetStats
+  m_Script: {fileID: 11500000, guid: be52cab75fbcad3468aaeebd1610e274, type: 3}
+  m_Name: ChaseState
   m_EditorClassIdentifier: 
-  SkillName: Waterjet
-  SkillCooldown: 0.2
-  SkillDamage: 1
-  SkillSpeed: 5
-  damageElement: {fileID: 11400000, guid: 1d7eb1f522c4dad43abc451088f53d17, type: 2}
+  Action:
+  - {fileID: 11400000, guid: 4af150b9526cd9d47b31c06c70a16774, type: 2}
+  Transitions: []

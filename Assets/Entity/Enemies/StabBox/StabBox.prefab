@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7863651206284315934}
   - component: {fileID: 8372374384106001689}
   - component: {fileID: 2601129987653482129}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: LifeDebugText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -144,9 +144,11 @@ GameObject:
   m_Component:
   - component: {fileID: 8997416622077623696}
   - component: {fileID: 7946650667869861705}
+  - component: {fileID: 6518935117724405085}
+  - component: {fileID: 8294802412752421727}
   - component: {fileID: 8195713084508793658}
   - component: {fileID: 335684984061891285}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: StabBox
   m_TagString: Entity
   m_Icon: {fileID: 0}
@@ -190,10 +192,38 @@ MonoBehaviour:
   debug_HowMuchDamage: 0
   debug_Element: {fileID: 0}
   EnemyStats: {fileID: 11400000, guid: 07689998be91234479bed424a3792d27, type: 2}
-  damageText: {fileID: 3133769683227876373, guid: 88c0e17795db4074b8535a67b69d99fc, type: 3}
   spawnYOffset: 1
   elevateY: 2
   _time: 0.5
+--- !u!114 &6518935117724405085
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6849090553714527273}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eee3ad1da0aa6f84aaaa44018d027ba8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _initialState: {fileID: 0}
+--- !u!114 &8294802412752421727
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6849090553714527273}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17d29092061d659459b45bec156383ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _entityMask:
+    serializedVersion: 2
+    m_Bits: 8
+  rayMultiplier: 3
 --- !u!50 &8195713084508793658
 Rigidbody2D:
   serializedVersion: 4
@@ -278,7 +308,7 @@ GameObject:
   - component: {fileID: 9078491388752061866}
   - component: {fileID: 1317949590367856441}
   - component: {fileID: 8857285863410000722}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -378,7 +408,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4765651315330821044}
   - component: {fileID: 1708238599639349902}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -460,9 +490,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8997416622077623696}
     m_Modifications:
+    - target: {fileID: 1421142044870676607, guid: 88c0e17795db4074b8535a67b69d99fc, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 3133769683227876373, guid: 88c0e17795db4074b8535a67b69d99fc, type: 3}
       propertyPath: m_Name
       value: EntityDamageText
+      objectReference: {fileID: 0}
+    - target: {fileID: 3133769683227876373, guid: 88c0e17795db4074b8535a67b69d99fc, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3368991042430835756, guid: 88c0e17795db4074b8535a67b69d99fc, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5243422545965910965, guid: 88c0e17795db4074b8535a67b69d99fc, type: 3}
       propertyPath: m_LocalPosition.x

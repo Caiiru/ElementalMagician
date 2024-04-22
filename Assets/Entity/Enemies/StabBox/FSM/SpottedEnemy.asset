@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2402a6a42e10204f8de82a4ebc3a61a, type: 3}
+  m_Name: SpottedEnemy
+  m_EditorClassIdentifier: 
+  Decision: {fileID: 11400000, guid: 39523e6e11a58e940b8f085e6f12c8e4, type: 2}
+  TrueState: {fileID: 11400000, guid: c7e48bf9043c3b145950bb8ee67ea0bb, type: 2}
+  FalseState: {fileID: 11400000, guid: 54197e607760df6448808c90928a76d5, type: 2}
