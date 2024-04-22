@@ -17,10 +17,7 @@ public class EnemySightSensor : MonoBehaviour
 
     private void Update()
     {
-        if (Ping())
-        {
-            Debug.Log("Player penis");
-        }
+        
     }
 
     public bool Ping()
@@ -30,12 +27,14 @@ public class EnemySightSensor : MonoBehaviour
  
 
         var _hit = Physics2D.RaycastAll(transform.position, Player.position - this.transform.position, rayMultiplier,
-            _entityMask);
-        Debug.DrawLine(transform.position, Player.position - this.transform.position);
+            _entityMask); 
+        Debug.DrawRay(transform.position, (Player.position - transform.position).normalized * rayMultiplier, Color.yellow);
         foreach (var obj in _hit)
         {
             if (obj.collider.tag == "Player")
+            {
                 return true;
+            }
         }
 
         return false;

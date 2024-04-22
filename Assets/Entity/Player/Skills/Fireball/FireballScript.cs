@@ -38,6 +38,7 @@ public class FireballScript : Skill_DamageSkill
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        print("Trigger " + other.name);
         if (other.transform.GetComponent<Entity>())
         {
             var otherEntity = other.transform.GetComponent<Entity>();
