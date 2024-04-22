@@ -8,6 +8,8 @@ public class TriggerCameraMove : MonoBehaviour
     private CameraManager _cameraManager;
     public int cameraNumber;
     public Transform playerPosition;
+    private float _cooldown = 0.5f;
+    private bool cameraWasMoved;
 
     public List<GameObject> objectToActive = new List<GameObject>();
     public List<GameObject> objectsToDesactive = new List<GameObject>();
@@ -15,11 +17,23 @@ public class TriggerCameraMove : MonoBehaviour
     {
         _cameraManager = CameraManager.GetInstance();
     }
- 
+
+    private void Update()
+    {
+        if (cameraWasMoved)
+        {
+            var _timer = _cooldown;
+            _timer -= Time.deltaTime;
+            if (_timer < 0)
+            {
+                cameraWasMoved = false;
+            }
+        }
+    }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.transform.CompareTag("Player"))
+        if (other.transform.CompareTag("Player") && !cameraWasMoved)
         {
             _cameraManager.ChangeCameraPoint(cameraNumber);
             if (playerPosition != null)
@@ -42,6 +56,8 @@ public class TriggerCameraMove : MonoBehaviour
                     _object.transform.gameObject.SetActive(false);
                 }
             }
+
+            cameraWasMoved = true;
         }
     }
 }

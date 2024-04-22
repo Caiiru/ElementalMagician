@@ -11,6 +11,10 @@ public class CameraManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            CameraPoints.Add(transform.GetChild(i));
+        }
         _mainCamera = Camera.main.transform.gameObject;
     }
 
@@ -22,7 +26,12 @@ public class CameraManager : MonoBehaviour
 
     public void ChangeCameraPoint(int value)
     {
-        _mainCamera.transform.position = new Vector3(CameraPoints[value].transform.position.x,CameraPoints[value].transform.position.y,-10); 
+        if (value != currentPoint)
+        {
+            currentPoint = value;
+            _mainCamera.transform.position = new Vector3(CameraPoints[currentPoint].transform.position.x,
+                CameraPoints[currentPoint].transform.position.y, -10);
+        }
     }
     
     

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Skill
   - Entity
+  - Collectable
   layers:
   - Default
   - TransparentFX

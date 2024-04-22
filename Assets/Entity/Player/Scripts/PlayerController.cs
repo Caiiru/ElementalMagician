@@ -1,4 +1,5 @@
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace TarodevController
@@ -40,6 +41,9 @@ namespace TarodevController
 
         private void GatherInput()
         {
+            if(Input.GetKeyDown(KeyCode.R))
+              Application.LoadLevel(Application.loadedLevel);  
+            
             _frameInput = new FrameInput
             {
                 JumpDown = Input.GetButtonDown("Jump"),

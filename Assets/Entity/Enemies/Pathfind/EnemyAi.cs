@@ -12,7 +12,8 @@ public class EnemyAi : MonoBehaviour
     public float activateDistance = 50f;
     public float pathUpdateSeconds = 0.5f;
     public LayerMask floorMask;
-
+    [Header("Attack")] public bool isOnAttackRange;
+    public float attackRange;
     [Header("Physics")]
     public float speed = 200f, jumpForce = 100f;
     public float nextWaypointDistance = 3f;
@@ -85,8 +86,7 @@ public class EnemyAi : MonoBehaviour
             Debug.DrawRay(transform.position, -Vector3.up * jumpCheckDistance, Color.red);
         // Direction Calculation
         Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
-        Vector2 force = direction * speed;
-
+        Vector2 force = direction * speed; 
         // Jump
         if (jumpEnabled && isGrounded && !isInAir && !isOnCoolDown)
         {
