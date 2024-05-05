@@ -16837,7 +16837,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8485442227027722122, guid: 88097b566ad1fdd489d7ee77465b57aa, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8860335677469237078, guid: 88097b566ad1fdd489d7ee77465b57aa, type: 3}
       propertyPath: m_Layer
@@ -17569,6 +17569,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: eb7bb5d13a7b5d64db19c8f54f553598, type: 2}
   - {fileID: 11400000, guid: 29f8306585cec45479cafabe2d477ea8, type: 2}
   - {fileID: 11400000, guid: 34d95d478988b5846a355b3b1cbabd03, type: 2}
+  - {fileID: 11400000, guid: a3ce664fc516e9c4281cc6f4ec0b242a, type: 2}
   noElement: {fileID: 11400000, guid: ccf13ff0c5fa7194da195aa0c67d4eac, type: 2}
 --- !u!114 &688322782
 MonoBehaviour:

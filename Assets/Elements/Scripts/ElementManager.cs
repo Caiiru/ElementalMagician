@@ -10,10 +10,13 @@ public partial class ElementManager : MonoBehaviour
     public Element noElement;
     public Element getElementByEnum(EntityElement _element)
     {
-        var elementToReturn = noElement;
-        if (_element == EntityElement.AIR) elementToReturn = elements[0];
-        else if (_element == EntityElement.FIRE) elementToReturn = elements[1];
-        else if (_element == EntityElement.WATER) elementToReturn = elements[2];
+        var elementToReturn = _element switch
+        {
+            EntityElement.AIR => elements[0],
+            EntityElement.FIRE => elements[1],
+            EntityElement.WATER => elements[2],
+            _ => noElement
+        };
 
         return elementToReturn;
     }
