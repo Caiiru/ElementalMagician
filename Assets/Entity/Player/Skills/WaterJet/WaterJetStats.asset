@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: WaterJetStats
   m_EditorClassIdentifier: 
   SkillName: Waterjet
-  SkillCooldown: 0.2
+  cooldown: 4
+  currentCooldown: -0.0008989066
   SkillDamage: 1
   SkillSpeed: 5
   damageElement: {fileID: 11400000, guid: 1d7eb1f522c4dad43abc451088f53d17, type: 2}

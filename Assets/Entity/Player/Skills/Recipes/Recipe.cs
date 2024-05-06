@@ -10,4 +10,6 @@ public class Recipe : ScriptableObject
     public SkillStats _skill;
 
     public GameObject _skillGO;
+
+    public bool canUse;
 }

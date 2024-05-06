@@ -7,7 +7,7 @@ using UnityEngine;
 public class PlayerSkillsInput : MonoBehaviour
 { 
     private Element _element;
-    private List<Recipe> recipes;
+    [SerializeField] private List<Recipe> recipes;
  
     public Transform _skillSpawnPosition;
     
@@ -105,25 +105,22 @@ public class PlayerSkillsInput : MonoBehaviour
         {
             if (firstElement == recipes[i].firstElement && secondElement == recipes[i].secondElement)
             {
-                var _skill = Instantiate(recipes[i]._skillGO); 
-                /*
-                if (_aimDirection.x < 0)
+                if (recipes[i].canUse)
                 {
-                    _skillSpawnPosition.forward = new Vector3(0, -90, 0);
+                    recipes[i].canUse = false;
+                    recipes[i]._skill.currentCooldown = recipes[i]._skill.cooldown;
+                    var _skill = Instantiate(recipes[i]._skillGO);
+                    var aimingDirection = transform.GetComponentInParent<PlayerController>().getStats().aimingDirection;
+                    _skill.GetComponent<Skill>().Create(_skillSpawnPosition, aimingDirection);
+                    break;
                 }
-                else
-                {
-                    
-                    _skillSpawnPosition.forward = new Vector3(0, 90, 0);
-                }
-                */
-                var aimingDirection = transform.GetComponentInParent<PlayerController>().getStats().aimingDirection;
-                _skill.GetComponent<Skill>().Create(_skillSpawnPosition,aimingDirection);
-                break;
+                
             } 
         }
         resetDisplay();
     } 
+
+    
     
     public interface IPlayerSkillsInput
     {

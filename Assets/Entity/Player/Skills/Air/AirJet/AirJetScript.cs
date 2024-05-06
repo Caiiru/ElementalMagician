@@ -8,7 +8,7 @@ using UnityEngine;
       Limite de cast
 
 */
-public class FireJetScript : Skill_DamageSkill
+public class AirJetScript : Skill_DamageSkill
 {
    private bool wasCreated = false;
    private bool canDamage = false;
@@ -36,10 +36,8 @@ public class FireJetScript : Skill_DamageSkill
       wasCreated = true;
       skillcooldownTime = _stats.cooldown; 
       _particleSystem.Play();
-        GameManager.getInstance().getPlayerEntity().gameObject
-            .GetComponent<PlayerController>().ChangeMovementSpeedByMultiply(.2f); 
-
-   }
+      GameManager.getInstance().getPlayerEntity().gameObject.GetComponent<PlayerController>().ChangeMovementSpeedByMultiply(.2f); // Muda pra 20% da velocidade atual
+    }
    
    public override void Execute()
    {
@@ -47,15 +45,17 @@ public class FireJetScript : Skill_DamageSkill
       if (playerStats.canMove)
       {
          playerStats.isAiming = true;
-         playerStats.canMove = false;
+         //playerStats.canMove = false;
       }
+        
 
       if (Input.GetKey(KeyCode.F))
       {
-         changePositionAndRotation(_spawnPoint.position, 
-            GameManager.getInstance().
-               getPlayerEntity().gameObject.GetComponent<PlayerController>()
-               .getStats().aimingDirection);
+            
+            changePositionAndRotation(_spawnPoint.position, 
+                GameManager.getInstance().
+                getPlayerEntity().gameObject.GetComponent<PlayerController>()
+                .getStats().aimingDirection);
          
          if (skillcooldownTime > _stats.cooldown)
          {
@@ -75,9 +75,8 @@ public class FireJetScript : Skill_DamageSkill
       else
       {
          playerStats.isAiming = false;
-         playerStats.canMove = true; 
-            GameManager.getInstance().getPlayerEntity().gameObject
-                .GetComponent<PlayerController>().ChangeMovementSpeedByMultiply(5); // Volta ao normal, 100%
+            //playerStats.canMove = true;
+         GameManager.getInstance().getPlayerEntity().gameObject.GetComponent<PlayerController>().ChangeMovementSpeedByMultiply(5); // Volta ao normal, 100%
 
             Destroy(this.gameObject);
       }

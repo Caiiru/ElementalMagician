@@ -13,6 +13,7 @@ namespace TarodevController
         private FrameInput _frameInput;
         private Vector2 _frameVelocity;
         private bool _cachedQueryStartInColliders;
+        [SerializeField] private float movementSpeed;
 
         #region Interface
 
@@ -31,6 +32,7 @@ namespace TarodevController
 
             _cachedQueryStartInColliders = Physics2D.queriesStartInColliders;
             _stats.aimingDirection = new Vector2(1, 0);
+            movementSpeed = _stats.MaxSpeed;
         }
 
         private void Update()
@@ -166,7 +168,7 @@ namespace TarodevController
             }
             else if(_stats.canMove)
             {
-                _frameVelocity.x = Mathf.MoveTowards(_frameVelocity.x, _frameInput.Move.x * _stats.MaxSpeed, _stats.Acceleration * Time.fixedDeltaTime);
+                _frameVelocity.x = Mathf.MoveTowards(_frameVelocity.x, _frameInput.Move.x * movementSpeed, _stats.Acceleration * Time.fixedDeltaTime);
                 _stats.aimingDirection = _frameInput.Move;
             }
         }
@@ -196,6 +198,11 @@ namespace TarodevController
         public ScriptableStats getStats()
         {
             return _stats;
+        }
+
+        public void ChangeMovementSpeedByMultiply(float value)
+        {
+            movementSpeed *= value;
         }
         
 #if UNITY_EDITOR

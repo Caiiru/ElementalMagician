@@ -4,8 +4,7 @@ using System.Collections.Generic;
 using UnityEngine; 
 public abstract class Skill : MonoBehaviour
 {
-     public string SkillName;
-     public float SkillCooldown;
+     public string SkillName; 
 
      public Vector2 _direction;
      public Vector2 _velocity;

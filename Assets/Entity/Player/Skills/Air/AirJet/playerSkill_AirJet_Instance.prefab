@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4215486867589068211}
   - component: {fileID: 3225022624308511564}
   m_Layer: 0
-  m_Name: FireJetEffect
+  m_Name: WaterJetEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -223,7 +223,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0.8980392, g: 0.28242856, b: 0.19999997, a: 1}
+      maxColor: {r: 0.1986917, g: 0.8753085, b: 0.8962264, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -1308,18 +1308,18 @@ ParticleSystem:
       maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
-        key0: {r: 1, g: 0.09803921, b: 0.32471904, a: 1}
-        key1: {r: 0.9843137, g: 0.66511595, b: 0.09411765, a: 1}
-        key2: {r: 0.5, g: 0.025943398, b: 0.08252949, a: 0}
-        key3: {r: 0.5, g: 0.025943398, b: 0.08252949, a: 0}
+        key0: {r: 0.0990566, g: 0.7882189, b: 1, a: 1}
+        key1: {r: 0.08009967, g: 0.418002, b: 0.6792453, a: 1}
+        key2: {r: 0, g: 0, b: 0, a: 0}
+        key3: {r: 0, g: 0, b: 0, a: 0}
         key4: {r: 0, g: 0, b: 0, a: 0}
         key5: {r: 0, g: 0, b: 0, a: 0}
         key6: {r: 0, g: 0, b: 0, a: 0}
         key7: {r: 0, g: 0, b: 0, a: 0}
         ctime0: 0
-        ctime1: 30455
-        ctime2: 65535
-        ctime3: 65535
+        ctime1: 65535
+        ctime2: 0
+        ctime3: 0
         ctime4: 0
         ctime5: 0
         ctime6: 0
@@ -1334,7 +1334,7 @@ ParticleSystem:
         atime7: 0
         m_Mode: 0
         m_ColorSpace: 0
-        m_NumColorKeys: 3
+        m_NumColorKeys: 2
         m_NumAlphaKeys: 2
       minGradient:
         serializedVersion: 2
@@ -4840,9 +4840,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6839098086958551462}
-  - component: {fileID: 4923197117498805311}
+  - component: {fileID: 3652250264645440943}
   m_Layer: 0
-  m_Name: playerSkill_FireJet_Instance
+  m_Name: playerSkill_AirJet_Instance
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4864,7 +4864,7 @@ Transform:
   - {fileID: 5997039482793209069}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4923197117498805311
+--- !u!114 &3652250264645440943
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4873,12 +4873,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 5047892879815674786}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9fa61cd4b607e634a81183c0bb3f0115, type: 3}
+  m_Script: {fileID: 11500000, guid: 8dadab9f8da5d3e43b4f89cf02ee3164, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   SkillName: 
   _direction: {x: 0, y: 0}
   _velocity: {x: 0, y: 0}
-  _stats: {fileID: 11400000, guid: cce779427e688054eb71880f81c3ae67, type: 2}
+  _stats: {fileID: 11400000, guid: d7df1d617d3907c4e89f12aafd2609d7, type: 2}
   skillcooldownTime: 0
-  _particleSystem: {fileID: 0}
+  _particleSystem: {fileID: 4215486867589068211}

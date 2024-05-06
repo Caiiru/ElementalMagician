@@ -34,9 +34,10 @@ public class WaterJetScript : Skill_DamageSkill
       changePositionAndRotation(spawnPoint.position,direction);
       base.Create(spawnPoint, direction);
       wasCreated = true;
-      skillcooldownTime = SkillCooldown; 
+      skillcooldownTime = _stats.cooldown; 
       _particleSystem.Play();
-   }
+      GameManager.getInstance().getPlayerEntity().gameObject.GetComponent<PlayerController>().ChangeMovementSpeedByMultiply(.2f); // Muda pra 20% da velocidade atual
+    }
    
    public override void Execute()
    {
@@ -44,17 +45,19 @@ public class WaterJetScript : Skill_DamageSkill
       if (playerStats.canMove)
       {
          playerStats.isAiming = true;
-         playerStats.canMove = false;
+         //playerStats.canMove = false;
       }
+        
 
       if (Input.GetKey(KeyCode.F))
       {
-         changePositionAndRotation(_spawnPoint.position, 
-            GameManager.getInstance().
-               getPlayerEntity().gameObject.GetComponent<PlayerController>()
-               .getStats().aimingDirection);
+            
+            changePositionAndRotation(_spawnPoint.position, 
+                GameManager.getInstance().
+                getPlayerEntity().gameObject.GetComponent<PlayerController>()
+                .getStats().aimingDirection);
          
-         if (skillcooldownTime > SkillCooldown)
+         if (skillcooldownTime > _stats.cooldown)
          {
             if (wasCreated)
             {  
@@ -63,7 +66,7 @@ public class WaterJetScript : Skill_DamageSkill
             }
          }
 
-         if (skillcooldownTime <= SkillCooldown)
+         if (skillcooldownTime <= _stats.cooldown)
          {
             skillcooldownTime += 0.5f * Time.deltaTime;
             
@@ -72,8 +75,10 @@ public class WaterJetScript : Skill_DamageSkill
       else
       {
          playerStats.isAiming = false;
-         playerStats.canMove = true;
-         Destroy(this.gameObject);
+            //playerStats.canMove = true;
+         GameManager.getInstance().getPlayerEntity().gameObject.GetComponent<PlayerController>().ChangeMovementSpeedByMultiply(5); // Volta ao normal, 100%
+
+            Destroy(this.gameObject);
       }
    }
 

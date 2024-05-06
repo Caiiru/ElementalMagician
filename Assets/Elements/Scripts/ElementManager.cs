@@ -20,6 +20,30 @@ public partial class ElementManager : MonoBehaviour
 
         return elementToReturn;
     }
+    private void Update()
+    {
+        DealWithCooldown();
+    }
+
+    void DealWithCooldown()
+    {
+        foreach(var recipe in recipes)
+        {
+            if (recipe._skill.currentCooldown >= 0)
+            {
+                recipe._skill.currentCooldown -= 1 * Time.deltaTime;
+
+            }
+            else
+            {
+                if (!recipe.canUse)
+                {
+                    Debug.Log(recipe.name + " can be used");
+                    recipe.canUse = true;
+                }
+            }
+        }
+    }
     
     
     #region Singleton

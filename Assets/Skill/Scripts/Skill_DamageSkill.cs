@@ -18,8 +18,8 @@ public class Skill_DamageSkill : Skill
     public override void Create(Transform spawnPoint, Vector2 direction)
     {
         base.Create(spawnPoint, direction);
-        SkillName = _stats.SkillName;
-        SkillCooldown = _stats.SkillCooldown;
+        SkillName = _stats.SkillName; 
+        _stats.currentCooldown = _stats.cooldown;
         
     }
 

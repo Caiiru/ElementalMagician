@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Fireball_Stats
   m_EditorClassIdentifier: 
   SkillName: Fireball
-  SkillCooldown: 2
-  SkillDamage: 5
+  cooldown: 5
+  currentCooldown: -0.0027722295
+  SkillDamage: 4
   SkillSpeed: 15
   damageElement: {fileID: 11400000, guid: 1ae1d9c3b0c168d45b259eceefd0ef73, type: 2}
