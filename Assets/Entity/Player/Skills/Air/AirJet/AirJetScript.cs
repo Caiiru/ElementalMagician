@@ -1,116 +1,78 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using TarodevController;
 using UnityEngine;
+using TarodevController;
 
 /*    TO DO LATER:
-      Limite de cast
+      Implementar o collider se movendo ate o final da particula.
+      Detectar a colisão do collider e empurrar a entidade que ele atingir
 
 */
-public class AirJetScript : Skill_DamageSkill
+public class AirJetScript : JetSkillScript
 {
-   private bool wasCreated = false;
-   private bool canDamage = false;
-   private ScriptableStats playerStats;
-
-   [SerializeField]private float skillcooldownTime;
-
-   [Header("SFX settings")] [SerializeField]
-   private ParticleSystem _particleSystem;
-   public override void Start()
-   {
-      base.Start();
-      _particleSystem = GetComponentInChildren<ParticleSystem>();
-   }
-   Transform _spawnPoint; 
-   public override void Create(Transform spawnPoint, Vector2 direction)
-   {
-
-      playerStats = GameManager.getInstance().getPlayerEntity()
-         .gameObject.GetComponent<PlayerController>().getStats();
-      
-      _spawnPoint = spawnPoint;
-      changePositionAndRotation(spawnPoint.position,direction);
-      base.Create(spawnPoint, direction);
-      wasCreated = true;
-      skillcooldownTime = _stats.cooldown; 
-      _particleSystem.Play();
-      GameManager.getInstance().getPlayerEntity().gameObject.GetComponent<PlayerController>().ChangeMovementSpeedByMultiply(.2f); // Muda pra 20% da velocidade atual
+    [SerializeField] private GameObject colliderDetecter;
+    public override void Start()
+    {
+        base.Start();
     }
-   
-   public override void Execute()
-   {
-      base.Execute();
-      if (playerStats.canMove)
-      {
-         playerStats.isAiming = true;
-         //playerStats.canMove = false;
-      }
-        
+    public override void Update()
+    {
+        base.Update();
+    }
+    public override void Create(Transform spawnPoint, Vector2 direction)
+    {
+        base.Create(spawnPoint, direction);
+    }
+    public override void Execute()
+    {
+        if (playerStats.canMove)
+        {
+            playerStats.isAiming = true;
+            //playerStats.canMove = false;
+        }
 
-      if (Input.GetKey(KeyCode.F))
-      {
-            
-            changePositionAndRotation(_spawnPoint.position, 
+
+        if (Input.GetKey(KeyCode.F) && _duration > 0)
+        {
+            changePositionAndRotation(_spawnPoint.position,
                 GameManager.getInstance().
                 getPlayerEntity().gameObject.GetComponent<PlayerController>()
                 .getStats().aimingDirection);
-         
-         if (skillcooldownTime > _stats.cooldown)
-         {
-            if (wasCreated)
-            {  
-               canDamage = true;
-               skillcooldownTime = 0;
+
+            if (skillcooldownTime > _stats.TimeTick)
+            {
+                if (wasCreated)
+                {
+                    canDamage = true;
+                    EmitCollider();
+
+                    skillcooldownTime = 0;
+                }
             }
-         }
 
-         if (skillcooldownTime <= _stats.cooldown)
-         {
-            skillcooldownTime += 0.5f * Time.deltaTime;
-            
-         }
-      }
-      else
-      {
-         playerStats.isAiming = false;
+            if (skillcooldownTime <= _stats.TimeTick)
+            {
+                skillcooldownTime += 0.5f * Time.deltaTime;
+
+            }
+            _duration -= 1 * Time.deltaTime;
+        }
+        else
+        {
+            playerStats.isAiming = false;
             //playerStats.canMove = true;
-         GameManager.getInstance().getPlayerEntity().gameObject.GetComponent<PlayerController>().ChangeMovementSpeedByMultiply(5); // Volta ao normal, 100%
-
+            GameManager.getInstance().getPlayerEntity().gameObject.GetComponent<PlayerController>().ChangeMovementSpeedByMultiply(5); // Volta ao normal, 100%
+            StartCooldown();
             Destroy(this.gameObject);
-      }
-   }
+        }
+    }
+    public void EmitCollider()
+    {
+        colliderDetecter.transform.position = transform.position;
+        colliderDetecter.GetComponent<Rigidbody2D>().AddForce(GameManager.getInstance().
+                getPlayerEntity().gameObject.GetComponent<PlayerController>()
+                .getStats().aimingDirection, ForceMode2D.Impulse);
+    }
+} 
 
-   public void setCanDamageFalse()
-   {
-      canDamage = false;
-   }
 
-   public int getDamageTick()
-   {
-      if(canDamage)
-         return _stats.SkillDamage;
-
-      return 0;
-   }
-
-   public override void Update()
-   {
-      base.Update();
-      Execute();
-   } 
-   
-   private void changePositionAndRotation(Vector2 position, Vector2 dir)
-   {
-      transform.position = position;
-      if (dir.x == -1)
-      {
-         this.transform.rotation = Quaternion.Euler(0, dir.x * 180,0);
-      }
-      else if(dir.x == 1)
-      {
-         this.transform.rotation = Quaternion.Euler(0, 0 ,0);
-      }
-   }
-}

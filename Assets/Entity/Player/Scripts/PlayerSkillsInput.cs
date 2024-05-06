@@ -108,7 +108,7 @@ public class PlayerSkillsInput : MonoBehaviour
                 if (recipes[i].canUse)
                 {
                     recipes[i].canUse = false;
-                    recipes[i]._skill.currentCooldown = recipes[i]._skill.cooldown;
+
                     var _skill = Instantiate(recipes[i]._skillGO);
                     var aimingDirection = transform.GetComponentInParent<PlayerController>().getStats().aimingDirection;
                     _skill.GetComponent<Skill>().Create(_skillSpawnPosition, aimingDirection);

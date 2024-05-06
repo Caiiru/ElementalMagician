@@ -4881,4 +4881,4 @@ MonoBehaviour:
   _velocity: {x: 0, y: 0}
   _stats: {fileID: 11400000, guid: cce779427e688054eb71880f81c3ae67, type: 2}
   skillcooldownTime: 0
-  _particleSystem: {fileID: 0}
+  _particleSystem: {fileID: 4215486867589068211}

@@ -11,4 +11,9 @@ public class Skill_DamageStats:SkillStats
     [Header("Element Settings")] 
     public Element damageElement;
 
+    [Header("Time Settings")]
+    public float SkillDuration;
+    [Tooltip("Skills like jet's have a necessity to tick by time to do damage, so every skill with duration > 0 need a timetick")]
+    public float TimeTick;
+
 }

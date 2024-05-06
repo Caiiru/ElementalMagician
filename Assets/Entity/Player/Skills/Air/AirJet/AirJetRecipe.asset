@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f612268eec913b2498d8ea78f4830cbb, type: 3}
   m_Name: AirJetRecipe
   m_EditorClassIdentifier: 
-  firstElement: {fileID: 11400000, guid: 1d7eb1f522c4dad43abc451088f53d17, type: 2}
+  firstElement: {fileID: 11400000, guid: 8c05d27a78207834d9aecb2afee901be, type: 2}
   secondElement: {fileID: 11400000, guid: 1d7eb1f522c4dad43abc451088f53d17, type: 2}
-  _skill: {fileID: 11400000, guid: d7df1d617d3907c4e89f12aafd2609d7, type: 2}
-  _skillGO: {fileID: 5047892879815674786, guid: cd537fa09a1686546b871f9183623856, type: 3}
+  _skill: {fileID: 11400000, guid: c64097d1a55e25844b4022be27f02851, type: 2}
+  _skillGO: {fileID: 5047892879815674786, guid: 8dc319a527ae1e7469f3741f1a4a0a64, type: 3}
+  canUse: 1

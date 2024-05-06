@@ -14,7 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SkillName: Fire Jet
   cooldown: 4
-  currentCooldown: -0.001617556
+  currentCooldown: -0.00070661143
   SkillDamage: 1
   SkillSpeed: 5
   damageElement: {fileID: 11400000, guid: 1ae1d9c3b0c168d45b259eceefd0ef73, type: 2}
+  SkillDuration: 4
+  TimeTick: 1

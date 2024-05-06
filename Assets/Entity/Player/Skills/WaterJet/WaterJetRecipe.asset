@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: WaterJetRecipe
   m_EditorClassIdentifier: 
   firstElement: {fileID: 11400000, guid: 1d7eb1f522c4dad43abc451088f53d17, type: 2}
-  secondElement: {fileID: 11400000, guid: 1d7eb1f522c4dad43abc451088f53d17, type: 2}
+  secondElement: {fileID: 11400000, guid: 1ae1d9c3b0c168d45b259eceefd0ef73, type: 2}
   _skill: {fileID: 11400000, guid: d7df1d617d3907c4e89f12aafd2609d7, type: 2}
   _skillGO: {fileID: 5047892879815674786, guid: cd537fa09a1686546b871f9183623856, type: 3}
+  canUse: 1

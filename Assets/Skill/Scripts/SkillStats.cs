@@ -6,6 +6,6 @@ public class SkillStats : ScriptableObject
 {
     public string SkillName;
     public float cooldown;
-    [HideInInspector]
+    //[HideInInspector]
     public float currentCooldown;
 }

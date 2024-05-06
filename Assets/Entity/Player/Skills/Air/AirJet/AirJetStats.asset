@@ -12,9 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c6fa7f8cf9043a48ce0366ee39d891b, type: 3}
   m_Name: AirJetStats
   m_EditorClassIdentifier: 
-  SkillName: Waterjet
+  SkillName: AirJet
   cooldown: 4
-  currentCooldown: -0.0008989066
+  currentCooldown: -0.0007498361
   SkillDamage: 1
   SkillSpeed: 5
-  damageElement: {fileID: 11400000, guid: 1d7eb1f522c4dad43abc451088f53d17, type: 2}
+  damageElement: {fileID: 11400000, guid: 8c05d27a78207834d9aecb2afee901be, type: 2}
+  SkillDuration: 4
+  TimeTick: 1
