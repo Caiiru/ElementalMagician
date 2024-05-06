@@ -5,12 +5,14 @@ using TarodevController;
 
 /*    TO DO LATER:
       Implementar o collider se movendo ate o final da particula.
-      Detectar a colis„o do collider e empurrar a entidade que ele atingir
+      Detectar a colis√£o do collider e empurrar a entidade que ele atingir
 
 */
 public class AirJetScript : JetSkillScript
 {
     [SerializeField] private GameObject colliderDetecter;
+    [SerializeField] private float colliderDetecter_velocity = 10f;
+    [SerializeField] private float airForce; 
     public override void Start()
     {
         base.Start();
@@ -68,10 +70,19 @@ public class AirJetScript : JetSkillScript
     }
     public void EmitCollider()
     {
+        if (!colliderDetecter.gameObject.activeSelf)
+        {
+            colliderDetecter.GetComponent<AirJet_BallForce>().setForce(airForce);
+            colliderDetecter.gameObject.SetActive(true);
+            colliderDetecter.transform.position = transform.position;
+        }
+
+        colliderDetecter.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         colliderDetecter.transform.position = transform.position;
-        colliderDetecter.GetComponent<Rigidbody2D>().AddForce(GameManager.getInstance().
-                getPlayerEntity().gameObject.GetComponent<PlayerController>()
-                .getStats().aimingDirection, ForceMode2D.Impulse);
+        var direction = GameManager.getInstance().getPlayerEntity().gameObject.GetComponent<PlayerController>()
+            .getStats().aimingDirection;
+        colliderDetecter.GetComponent<Rigidbody2D>().AddForce(direction.normalized * colliderDetecter_velocity, ForceMode2D.Impulse);
+        print(direction);
     }
 } 
 

@@ -4840,15 +4840,17 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3496127625627890767}
+  - component: {fileID: 3974983712648874037}
   - component: {fileID: 3888047477597937799}
   - component: {fileID: 783054153882912520}
+  - component: {fileID: 4822697863299566395}
   m_Layer: 0
   m_Name: collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3496127625627890767
 Transform:
   m_ObjectHideFlags: 0
@@ -4864,6 +4866,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 6839098086958551462}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3974983712648874037
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3389114306146861189}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e18ed2a8c05fe94dabcc91fddb9b753, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  airForce: 5
 --- !u!212 &3888047477597937799
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4943,6 +4958,41 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!58 &4822697863299566395
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3389114306146861189}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
 --- !u!1 &5047892879815674786
 GameObject:
   m_ObjectHideFlags: 0
@@ -4973,8 +5023,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 5997039482793209069}
   - {fileID: 3496127625627890767}
+  - {fileID: 5997039482793209069}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5678330706646541659
@@ -5001,3 +5051,5 @@ MonoBehaviour:
   skillcooldownTime: 0
   _particleSystem: {fileID: 4215486867589068211}
   colliderDetecter: {fileID: 3389114306146861189}
+  colliderDetecter_velocity: 3
+  airForce: 2

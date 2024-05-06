@@ -72,7 +72,7 @@ public class EnemyEntity : Entity
 
     private void OnParticleCollision(GameObject other)
     { 
-        var jet = other.GetComponentInParent<WaterJetScript>();
+        var jet = other.GetComponentInParent<JetSkillScript>();
         if (jet.getDamageTick() != 0)
         {
             takeDamage(jet.getDamageTick(),jet._stats.damageElement);
