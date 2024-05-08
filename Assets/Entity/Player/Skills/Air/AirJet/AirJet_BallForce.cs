@@ -25,7 +25,6 @@ public class AirJet_BallForce : MonoBehaviour
     {
         if (other.transform.GetComponent<Entity>())
         {
-            print("AIRFORCE COLLISION");
             other.transform.GetComponent<Rigidbody2D>().AddForce(_rigidbody2D.velocity.normalized * airForce, ForceMode2D.Impulse);
         }
     }

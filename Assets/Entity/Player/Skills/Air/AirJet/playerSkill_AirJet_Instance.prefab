@@ -5052,4 +5052,5 @@ MonoBehaviour:
   _particleSystem: {fileID: 4215486867589068211}
   colliderDetecter: {fileID: 3389114306146861189}
   colliderDetecter_velocity: 3
-  airForce: 2
+  airForce: 3
+  colliderTimer: 0

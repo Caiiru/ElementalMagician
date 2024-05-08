@@ -8,6 +8,15 @@ public partial class ElementManager : MonoBehaviour
     public List<Element> elements;
     public List<Recipe> recipes;
     public Element noElement;
+
+    public void Start()
+    {
+        foreach (var recipe in recipes)
+        {
+            recipe._skill.currentCooldown = 0;
+        }
+    }
+
     public Element getElementByEnum(EntityElement _element)
     {
         var elementToReturn = _element switch
@@ -37,8 +46,7 @@ public partial class ElementManager : MonoBehaviour
             else
             {
                 if (!recipe.canUse)
-                {
-                    Debug.Log(recipe.name + " can be used");
+                { 
                     recipe.canUse = true;
                 }
             }

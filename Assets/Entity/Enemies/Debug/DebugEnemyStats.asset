@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a7000c4745c51149a0676e4e0304c81, type: 3}
   m_Name: DebugEnemyStats
   m_EditorClassIdentifier: 
-  max_HP: 0
-  current_HP: 0
+  max_HP: 99
+  current_HP: 99
   EntityElement: 0
   elementalWeakness: 0
   elementalResistance: 0
-  JumpForce: 0
-  enemySprite: {fileID: 0}
+  JumpForce: 5
+  enemySprite: {fileID: 21300000, guid: 6649293246782fa428204286317d9b24, type: 3}

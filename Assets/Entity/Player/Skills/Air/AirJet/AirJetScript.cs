@@ -12,10 +12,18 @@ public class AirJetScript : JetSkillScript
 {
     [SerializeField] private GameObject colliderDetecter;
     [SerializeField] private float colliderDetecter_velocity = 10f;
-    [SerializeField] private float airForce; 
+    [SerializeField] private float airForce;
+    [SerializeField] private float colliderTimer;
+
+    private float damageCooldown; 
+
+    private PlayerController _controller;
     public override void Start()
     {
         base.Start();
+        _controller = GameManager.getInstance().getPlayerEntity().gameObject.GetComponent<PlayerController>();
+
+        damageCooldown = _stats.TimeTick*2;
     }
     public override void Update()
     {
@@ -24,6 +32,7 @@ public class AirJetScript : JetSkillScript
     public override void Create(Transform spawnPoint, Vector2 direction)
     {
         base.Create(spawnPoint, direction);
+        
     }
     public override void Execute()
     {
@@ -37,25 +46,34 @@ public class AirJetScript : JetSkillScript
         if (Input.GetKey(KeyCode.F) && _duration > 0)
         {
             changePositionAndRotation(_spawnPoint.position,
-                GameManager.getInstance().
-                getPlayerEntity().gameObject.GetComponent<PlayerController>()
-                .getStats().aimingDirection);
-
-            if (skillcooldownTime > _stats.TimeTick)
+                _controller.getStats().aimingDirection);
+ 
+            if (skillcooldownTime > damageCooldown)
             {
+                
+                canDamage = true;
+                skillcooldownTime = 0;
                 if (wasCreated)
                 {
-                    canDamage = true;
-                    EmitCollider();
-
-                    skillcooldownTime = 0;
                 }
             }
 
-            if (skillcooldownTime <= _stats.TimeTick)
+            if (colliderTimer > _stats.TimeTick)
+            {
+                if(wasCreated)
+                    EmitCollider();
+                colliderTimer = 0;
+            }
+
+            if (skillcooldownTime <= damageCooldown)
             {
                 skillcooldownTime += 0.5f * Time.deltaTime;
 
+            }
+
+            if (colliderTimer <= _stats.TimeTick)
+            {
+                colliderTimer += 0.5f * Time.deltaTime;
             }
             _duration -= 1 * Time.deltaTime;
         }
@@ -63,12 +81,12 @@ public class AirJetScript : JetSkillScript
         {
             playerStats.isAiming = false;
             //playerStats.canMove = true;
-            GameManager.getInstance().getPlayerEntity().gameObject.GetComponent<PlayerController>().ChangeMovementSpeedByMultiply(5); // Volta ao normal, 100%
+            _controller.ChangeMovementSpeedByMultiply(5); // Volta ao normal, 100%
             StartCooldown();
             Destroy(this.gameObject);
         }
     }
-    public void EmitCollider()
+    void EmitCollider()
     {
         if (!colliderDetecter.gameObject.activeSelf)
         {
@@ -79,10 +97,9 @@ public class AirJetScript : JetSkillScript
 
         colliderDetecter.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         colliderDetecter.transform.position = transform.position;
-        var direction = GameManager.getInstance().getPlayerEntity().gameObject.GetComponent<PlayerController>()
-            .getStats().aimingDirection;
+        var direction = _controller.getStats().aimingDirection;
         colliderDetecter.GetComponent<Rigidbody2D>().AddForce(direction.normalized * colliderDetecter_velocity, ForceMode2D.Impulse);
-        print(direction);
+        
     }
 } 
 
