@@ -9949,7 +9949,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3133769683227876373, guid: 88c0e17795db4074b8535a67b69d99fc, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3368991042430835756, guid: 88c0e17795db4074b8535a67b69d99fc, type: 3}
       propertyPath: m_Layer
@@ -9969,7 +9969,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5243422545965910965, guid: 88c0e17795db4074b8535a67b69d99fc, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.19
+      value: 3.21
       objectReference: {fileID: 0}
     - target: {fileID: 5243422545965910965, guid: 88c0e17795db4074b8535a67b69d99fc, type: 3}
       propertyPath: m_LocalPosition.z
@@ -10238,6 +10238,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: a3ce664fc516e9c4281cc6f4ec0b242a, type: 2}
   - {fileID: 11400000, guid: f43fb02f9dff74c4ab27c327e8fbf3c5, type: 2}
   - {fileID: 11400000, guid: d80c2c78c6597da459e03308705aef1b, type: 2}
+  - {fileID: 11400000, guid: eaf6943a0d5185a4595412b796a3fbe4, type: 2}
   noElement: {fileID: 11400000, guid: ccf13ff0c5fa7194da195aa0c67d4eac, type: 2}
 --- !u!4 &1529030334
 Transform:

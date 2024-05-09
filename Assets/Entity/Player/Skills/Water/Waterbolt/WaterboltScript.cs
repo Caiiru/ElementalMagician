@@ -1,10 +1,9 @@
-    using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FireboltScript : Skill_DamageSkill
+public class WaterboltScript : Skill_DamageSkill
 {
-    
     private Rigidbody2D _rb;
     private Collider2D _coll; 
     public override void Create(Transform spawnPoint, Vector2 direction)
@@ -44,13 +43,12 @@ public class FireboltScript : Skill_DamageSkill
         
     }
     private void OnTriggerEnter2D(Collider2D other)
-    {
-        print("Trigger " + other.name);
+    { 
         if (other.transform.GetComponent<Entity>())
         {
             var otherEntity = other.transform.GetComponent<Entity>();
             otherEntity.takeDamage(_stats.SkillDamage,_stats.damageElement);
-		    other.transform.GetComponent<Rigidbody2D>().AddForce(_velocity.normalized * (_stats.SkillDamage), ForceMode2D.Impulse);
+            other.transform.GetComponent<Rigidbody2D>().AddForce(_velocity.normalized * (_stats.SkillDamage), ForceMode2D.Impulse);
         }
         Destroy(this.gameObject);
     }

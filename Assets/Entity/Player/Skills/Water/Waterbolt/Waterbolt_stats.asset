@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c6fa7f8cf9043a48ce0366ee39d891b, type: 3}
+  m_Name: Waterbolt_stats
+  m_EditorClassIdentifier: 
+  SkillName: Waterbolt
+  cooldown: 2
+  currentCooldown: -0.02
+  SkillDamage: 2
+  SkillSpeed: 25
+  damageElement: {fileID: 11400000, guid: 1d7eb1f522c4dad43abc451088f53d17, type: 2}
+  SkillDuration: 0
+  TimeTick: 0
