@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0c6fa7f8cf9043a48ce0366ee39d891b, type: 3}
-  m_Name: Fireball_Stats
+  m_Name: Firebolt_Stats
   m_EditorClassIdentifier: 
-  SkillName: Fireball
-  cooldown: 5
-  currentCooldown: 1.9012194
-  SkillDamage: 4
-  SkillSpeed: 5
+  SkillName: Firebolt
+  cooldown: 1
+  currentCooldown: -0.0019348916
+  SkillDamage: 2
+  SkillSpeed: 15
   damageElement: {fileID: 11400000, guid: 1ae1d9c3b0c168d45b259eceefd0ef73, type: 2}
   SkillDuration: 0
   TimeTick: 0

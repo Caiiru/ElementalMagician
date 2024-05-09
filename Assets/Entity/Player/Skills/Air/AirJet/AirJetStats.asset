@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SkillName: AirJet
   cooldown: 4
-  currentCooldown: -0.0008845222
+  currentCooldown: 0.063992254
   SkillDamage: 1
   SkillSpeed: 5
   damageElement: {fileID: 11400000, guid: 8c05d27a78207834d9aecb2afee901be, type: 2}
   SkillDuration: 4
-  TimeTick: 0.5
+  TimeTick: 0.2

@@ -8506,6 +8506,7 @@ GameObject:
   - component: {fileID: 344809973}
   - component: {fileID: 344809971}
   - component: {fileID: 344809975}
+  - component: {fileID: 344809976}
   m_Layer: 0
   m_Name: EnemyForceDebug
   m_TagString: Untagged
@@ -8539,7 +8540,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &344809973
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8586,7 +8587,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 344809970}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -8624,6 +8625,41 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!70 &344809976
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 344809970}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 0.5, y: 1}
+  m_Direction: 0
 --- !u!1 &376036999
 GameObject:
   m_ObjectHideFlags: 0
@@ -10201,6 +10237,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 34d95d478988b5846a355b3b1cbabd03, type: 2}
   - {fileID: 11400000, guid: a3ce664fc516e9c4281cc6f4ec0b242a, type: 2}
   - {fileID: 11400000, guid: f43fb02f9dff74c4ab27c327e8fbf3c5, type: 2}
+  - {fileID: 11400000, guid: d80c2c78c6597da459e03308705aef1b, type: 2}
   noElement: {fileID: 11400000, guid: ccf13ff0c5fa7194da195aa0c67d4eac, type: 2}
 --- !u!4 &1529030334
 Transform:
