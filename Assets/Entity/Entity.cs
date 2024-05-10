@@ -12,6 +12,7 @@ public class Entity : MonoBehaviour
     [SerializeField]private int max_HP;
     [SerializeField] private int current_HP;
     
+    public List<GameObject> popupList = new List<GameObject>();
     #region Components
 
     private Rigidbody2D _rb;
@@ -26,6 +27,14 @@ public class Entity : MonoBehaviour
     public Element debug_Element;
 
     #endregion
+    
+    [Header("UI_Text")]
+    
+    public float spawnYOffset = 1.5f;
+    public float elevateY = 2f;
+    public float _time = 0.5f;
+    [HideInInspector]
+    public GameObject textGameObject; 
 
     public virtual void Awake()
     {
@@ -38,15 +47,28 @@ public class Entity : MonoBehaviour
     {
         max_HP = stats.max_HP;
         current_HP = stats.current_HP;
-        if(debug_Text)
-            debug_Text.text = current_HP + " / " + max_HP;
+        
+        #region PopupText
+        textGameObject = transform.GetChild(0).gameObject;
+        popupList.Add(textGameObject);
+        
+        textGameObject.transform.gameObject.SetActive(false);
+        for (int i = 0; i < 2; i++)
+        {
+            var textInstance = Instantiate(textGameObject);
+            textInstance.transform.gameObject.SetActive(false);
+            textInstance.transform.SetParent(this.transform);
+            popupList.Add(textInstance);
+        }
+
+        #endregion
+        
     }
 
     public virtual void takeDamage(int _damage, Element damageType)
     {
         current_HP -= CalculateDamage(_damage, damageType);
-        if(debug_Text)
-            debug_Text.text = current_HP + " / " + max_HP;
+        
         if (isDead())
         {
             current_HP = 0;
@@ -83,6 +105,35 @@ public class Entity : MonoBehaviour
         
         return valueToReturn;
     }
+
+    public virtual void Heal(int value, Element elementType)
+    {
+        if (current_HP + value > max_HP)
+        {
+            current_HP = max_HP;
+            value = 0;
+        }
+        else current_HP += value;
+        
+        foreach (var text in popupList)
+        {
+            if (!text.activeSelf)
+            { 
+                text.transform.position = new Vector2(transform.position.x, transform.position.y+spawnYOffset);
+                text.SetActive(true);
+                text.transform.GetChild(0).transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = value.ToString();
+                text.transform.GetChild(0).transform.GetChild(0).GetComponent<TextMeshProUGUI>().color =
+                    elementType.ElementColor;
+                
+                StartCoroutine(PopupText(value,text,_time));
+                LeanTween.moveY(text, transform.position.y + spawnYOffset + elevateY, _time);
+                var scale = text.transform.localScale;
+                text.transform.localScale = new Vector3(0.4f, 0.4f, 0.4f);
+                LeanTween.scale(text, scale/2, _time);
+                break;
+            }
+        }
+    }
     
 
     public void Update()
@@ -102,5 +153,13 @@ public class Entity : MonoBehaviour
     public int getCurrentHealth()
     {
         return current_HP;
+    }
+    
+    public IEnumerator PopupText(int _value,GameObject obj, float _time)
+    {
+        yield return new WaitForSeconds(_time);
+        obj.SetActive(false);
+        obj.transform.localScale = new Vector3(1, 1, 1);
+
     }
 }
