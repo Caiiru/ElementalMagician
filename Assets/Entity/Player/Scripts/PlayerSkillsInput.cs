@@ -111,6 +111,7 @@ public class PlayerSkillsInput : MonoBehaviour
 
                     var _skill = Instantiate(recipes[i]._skillGO);
                     var aimingDirection = transform.GetComponentInParent<PlayerController>().getStats().aimingDirection;
+                    
                     _skill.GetComponent<Skill>().Create(_skillSpawnPosition, aimingDirection);
                     break;
                 }

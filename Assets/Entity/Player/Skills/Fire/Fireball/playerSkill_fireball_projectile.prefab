@@ -132,9 +132,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SkillName: Fireball
-  SkillCooldown: 2
   _direction: {x: 0, y: 0}
   _velocity: {x: 0, y: 0}
+  angle: 0
+  targetDirection: {x: 0, y: 0}
   _stats: {fileID: 11400000, guid: 2f8e9562580e49744a7b3d454d1d688b, type: 2}
 --- !u!50 &1433217196601968988
 Rigidbody2D:
