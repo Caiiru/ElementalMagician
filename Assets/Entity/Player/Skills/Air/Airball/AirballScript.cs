@@ -13,10 +13,6 @@ public class AirballScript : Skill_DamageSkill
       _rb = GetComponent<Rigidbody2D>();
       _coll = GetComponent<Collider2D>(); 
         
-      if (direction.x != 1)
-      {
-         transform.localScale = new Vector3(-1, 1, 1);
-      }
       _direction = direction;
       transform.position = spawnPoint.position; 
       _velocity = _direction * _stats.SkillSpeed;

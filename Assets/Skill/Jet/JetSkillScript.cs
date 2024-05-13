@@ -29,6 +29,8 @@ public class JetSkillScript : Skill_DamageSkill
     public override void Create(Transform spawnPoint, Vector2 direction)
     {
 
+        base.Create(spawnPoint,direction);
+        _direction = direction;
         playerStats = GameManager.getInstance().getPlayerEntity()
            .gameObject.GetComponent<PlayerController>().getStats();
 
@@ -78,6 +80,7 @@ public class JetSkillScript : Skill_DamageSkill
 
             }
             _duration -= 1 * Time.deltaTime;
+            print(_direction);
         }
         else
         {

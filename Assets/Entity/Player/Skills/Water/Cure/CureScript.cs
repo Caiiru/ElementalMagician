@@ -20,9 +20,7 @@ public class CureScript : Skill_Utility
     public float _duration;
     private bool canHeal;
     public override void Create(Transform spawnPoint, Vector2 direction)
-    {
-        Debug.Log("Create Cure");
-        base.Create(spawnPoint, direction);
+    { 
         transform.position = spawnPoint.position;
         _playerEntity = GameManager.getInstance().getPlayerEntity();
         SkillName = _stats.SkillName;
