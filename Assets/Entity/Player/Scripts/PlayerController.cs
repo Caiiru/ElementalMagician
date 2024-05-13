@@ -202,6 +202,15 @@ namespace TarodevController
         {
             movementSpeed *= value;
         }
+        public bool isMoving()
+        {
+
+            return _rb.velocity.x != 0;
+        }
+        public float playerVelocityX()
+        {
+            return _rb.velocity.x;
+        }
         
 #if UNITY_EDITOR
         private void OnValidate()
