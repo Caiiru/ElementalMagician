@@ -14,6 +14,7 @@ namespace TarodevController
         private Vector2 _frameVelocity;
         private bool _cachedQueryStartInColliders;
         [SerializeField] private float movementSpeed;
+        private Animator _animator;
 
         #region Interface
 
@@ -33,12 +34,14 @@ namespace TarodevController
             _cachedQueryStartInColliders = Physics2D.queriesStartInColliders;
             _stats.aimingDirection = new Vector2(1, 0);
             movementSpeed = _stats.MaxSpeed;
+            _animator = GetComponentInChildren<Animator>();
         }
 
         private void Update()
         {
             _time += Time.deltaTime;
             GatherInput();
+            UpdateJumpAnimation();
         }
 
         private void GatherInput()
@@ -147,6 +150,16 @@ namespace TarodevController
             _frameVelocity.y = _stats.JumpPower;
             Jumped?.Invoke();
         }
+
+        private void UpdateJumpAnimation()
+        {
+            _animator.SetBool("isJumping",!_grounded);
+            if (!_grounded)
+            {
+                _animator.SetFloat("VelocityY", _rb.velocity.y);
+            }
+        
+    }
 
         #endregion
 
