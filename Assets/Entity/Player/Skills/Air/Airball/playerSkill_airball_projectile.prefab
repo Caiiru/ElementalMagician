@@ -25,13 +25,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1328901690515339197}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
   m_LocalPosition: {x: -1.189, y: 0, z: 0}
   m_LocalScale: {x: 1.4999999, y: 1.4999999, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 6400066385263837802}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!212 &7456940138892469249
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -132,8 +132,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SkillName: 
-  SkillCooldown: 0
-  _direction: {x: 0, y: 0}
+  _direction: {x: 0, y: 0, z: 0}
   _velocity: {x: 0, y: 0}
   _stats: {fileID: 11400000, guid: e6d0077fb53cc6143a239f1d41d4dca2, type: 2}
 --- !u!50 &1433217196601968988

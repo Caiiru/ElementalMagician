@@ -58,7 +58,7 @@ public class JetSkillScript : Skill_DamageSkill
         }
 
 
-        if (Input.GetKey(KeyCode.F) && _duration > 0)
+        if (Input.GetButton("Fire1") && _duration > 0)
         { 
             changePositionAndRotation(_spawnPoint.position,
                 GameManager.getInstance().

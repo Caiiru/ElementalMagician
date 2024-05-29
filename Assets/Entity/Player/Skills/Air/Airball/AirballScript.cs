@@ -13,10 +13,10 @@ public class AirballScript : Skill_DamageSkill
       _rb = GetComponent<Rigidbody2D>();
       _coll = GetComponent<Collider2D>(); 
         
-      _direction = direction;
       transform.position = spawnPoint.position; 
-      _velocity = _direction * _stats.SkillSpeed;
       
+      _velocity = _direction * _stats.SkillSpeed;
+         
       _rb.AddForce(_velocity, ForceMode2D.Impulse);
    }
    

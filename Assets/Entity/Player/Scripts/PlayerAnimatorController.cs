@@ -28,7 +28,7 @@ public class PlayerAnimatorController : MonoBehaviour
     void MoveAnimation()
     {
         _playerMovementSpeedX = _player.playerVelocityX();
-        _animator.SetFloat("MoveSpeedX", _playerMovementSpeedX);
+        //_animator.SetFloat("MoveSpeedX", _playerMovementSpeedX);
         _animator.SetBool("isMoving", _player.isMoving());
 
         

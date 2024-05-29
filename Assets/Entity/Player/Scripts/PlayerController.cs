@@ -15,7 +15,7 @@ namespace TarodevController
         private bool _cachedQueryStartInColliders;
         [SerializeField] private float movementSpeed;
         private Animator _animator;
-
+         
         #region Interface
 
         public Vector2 FrameInput => _frameInput.Move;
@@ -39,20 +39,20 @@ namespace TarodevController
 
         private void Update()
         {
-            _time += Time.deltaTime;
+            _time += Time.deltaTime;    
             GatherInput();
             UpdateJumpAnimation();
         }
 
         private void GatherInput()
         {
-            if(Input.GetKeyDown(KeyCode.R))
-              Application.LoadLevel(Application.loadedLevel);  
+             
             
             _frameInput = new FrameInput
             {
                 JumpDown = Input.GetButtonDown("Jump"),
                 JumpHeld = Input.GetButton("Jump"),
+                
                 Move = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"))
             };
 

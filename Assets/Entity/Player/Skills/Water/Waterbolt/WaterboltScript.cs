@@ -14,17 +14,9 @@ public class WaterboltScript : Skill_DamageSkill
         _coll = GetComponent<Collider2D>(); 
         
         
-        _direction = direction;
-        transform.position = spawnPoint.position;
-
-        if (direction.x != 1)
-        {
-            transform.localScale = new Vector3(-1, 1, 1);
-        }
-        
         _velocity = _direction * _stats.SkillSpeed;
         
-        _rb.AddForce(_velocity, ForceMode2D.Impulse);
+        _rb.AddForce(_velocity, ForceMode2D.Impulse); 
     }
 
     public override void Execute()

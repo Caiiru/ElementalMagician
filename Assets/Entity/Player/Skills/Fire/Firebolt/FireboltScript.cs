@@ -15,7 +15,6 @@ public class FireboltScript : Skill_DamageSkill
         _coll = GetComponent<Collider2D>(); 
         
         
-        _direction = direction;
         transform.position = spawnPoint.position;
         
         /*

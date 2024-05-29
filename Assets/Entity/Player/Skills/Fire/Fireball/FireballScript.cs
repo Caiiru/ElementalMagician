@@ -14,14 +14,19 @@ public class FireballScript : Skill_DamageSkill
         _rb = GetComponent<Rigidbody2D>();
         _coll = GetComponent<Collider2D>(); 
         
-        
+        /*
         _direction = direction;
-        transform.position = spawnPoint.position;
  
         
+        //_velocity = _direction * _stats.SkillSpeed;
+        _velocity = _direction * 1.1f;
+        
+        _rb.AddForce(_velocity, ForceMode2D.Impulse);
+        */
         _velocity = _direction * _stats.SkillSpeed;
         
         _rb.AddForce(_velocity, ForceMode2D.Impulse);
+        
     }
 
  
@@ -30,6 +35,8 @@ public class FireballScript : Skill_DamageSkill
     {
         base.Update();
         Execute();
+         
+ 
     }
 
     private void OnTriggerEnter2D(Collider2D other)

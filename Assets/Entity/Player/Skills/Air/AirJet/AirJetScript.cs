@@ -43,7 +43,7 @@ public class AirJetScript : JetSkillScript
         }
 
 
-        if (Input.GetKey(KeyCode.F) && _duration > 0)
+        if (Input.GetButton("Fire1") && _duration > 0)
         {
             changePositionAndRotation(_spawnPoint.position,
                 _controller.getStats().aimingDirection);

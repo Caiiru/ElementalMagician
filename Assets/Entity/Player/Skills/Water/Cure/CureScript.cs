@@ -49,7 +49,7 @@ public class CureScript : Skill_Utility
     {
         base.Execute();
         transform.position = _spawnPoint.position;
-        if (Input.GetKey(KeyCode.F) && _duration > 0 )
+        if (Input.GetButton("Fire1") && _duration > 0 )
         {
             if (skillcooldownTime > _stats.TickSkill)
             {
