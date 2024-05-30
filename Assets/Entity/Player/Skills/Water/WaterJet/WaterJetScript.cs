@@ -3,11 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TarodevController;
 using UnityEngine;
-
-/*    TO DO LATER:
-      Limite de cast
-
-*/
+ 
 public class WaterJetScript : JetSkillScript
 {
     public override void Start()
