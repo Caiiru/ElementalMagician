@@ -16,7 +16,7 @@
     - [X] Display 2 Elements Selected
     - [X] Create The List With Recipes For Each Skill
     - [X] Use Skill when player input the shot button
-- [ ] First Skill: Fireball <- WIP  
+- [X] First Skill: Fireball   
 
 
 
@@ -114,5 +114,25 @@ Offensive Script:
 
 This is script have an array for the recipes and get the inputs from "GatherInput" func 
 
-#### *Date: 07/04/2024*
+
+
+
+--------------------------------------------------------------------------------------------------------
+
+
+I forget to update this readme, so after two months, a lot of things have changed, so, for now, Im actually working in this things: 
+
+- [ ] Enemy Movement:
+    - [X] Horizontal Movement
+    - [ ] Jump
+    - [ ] Flying Movement
+    - [ ] Enemy Pathfind and See Objects
+        - [ ] Enemy cant see player if has a wall between then
+        - [ ] Enemy identifies if he can jump through platforms 
+- [ ] Enemy Attack:
+    - [ ] Enemy Attack if its in range
+    - [ ] Enemy Attack Cooldown
+
+
+#### *Date: 03/06/2024*
 
