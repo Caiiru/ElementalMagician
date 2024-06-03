@@ -218,7 +218,7 @@ namespace TarodevController
         public bool isMoving()
         {
 
-            return _rb.velocity.x != 0;
+            return (_rb.velocity.x >= 0.2f || _rb.velocity.x <= -0.2f) && _frameInput.Move.x != 0;
         }
         public float playerVelocityX()
         {
