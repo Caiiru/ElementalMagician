@@ -7,7 +7,7 @@ TagManager:
   - Skill
   - Entity
   - Collectable
-  - ExitRight
+  - RightStage
   layers:
   - Default
   - TransparentFX
