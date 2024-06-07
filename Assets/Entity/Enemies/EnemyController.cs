@@ -13,21 +13,32 @@ public class EnemyController : MonoBehaviour
     [Header("Movement")]
     public Transform target;
     public Vector2 lastTargetPosition;
+    private Vector2 movementDirection;
     public float movementSpeed;
     public bool canMove;
+    [Header("JUMP")] [Range(1f, 3f)] 
+    public float JumpForce = 1f;
+    
+    public bool isGrounded = false;
 
     [Header("Area")]
     [Range(1.5f,5f)]
     public float attackArea;
     [Header("Vision")]
+    [Range(1.5f,5f)]
     public float fieldOfView;
     public bool isSeeingPlayer;
     public float cooldownToReturn = 3f;
+    public float timeSinceLastPlayerView = 0f;
+
+    public LayerMask wallMask;
 
     private void Awake()
     {
         //Initial State
         state = EnemyState.Idle;
+
+        movementDirection = Vector2.left;
 
         //Components
         _rb2D = GetComponent<Rigidbody2D>();
@@ -35,6 +46,7 @@ public class EnemyController : MonoBehaviour
     }
     void Start()
     {
+        attackArea = 1.5f;
         canMove = false;
         
     }
@@ -47,6 +59,7 @@ public class EnemyController : MonoBehaviour
                 break;
             case EnemyState.Patrol:
                 target = GameManager.getInstance().getPlayerEntity().transform;
+                 Patrol();
                 if (seeTheTarget(target.transform))
                 {
                     changeState(EnemyState.Pursuit);
@@ -56,30 +69,30 @@ public class EnemyController : MonoBehaviour
                 if (seeTheTarget(target.transform))
                 {
                         lastTargetPosition = target.position;
-                        MoveToPosition(target.position);
+                        MoveToPosition(lastTargetPosition);
+                        timeSinceLastPlayerView = Time.time; 
                 }
                 else
                 {
                     MoveToPosition(lastTargetPosition);
-                    var timeSinceLastPlayerView = Time.time;
                     if (Time.time - timeSinceLastPlayerView > cooldownToReturn)
                     {
-                        Debug.Log("Return to patrol");
                         changeState(EnemyState.Patrol);
+                    }
+                    else
+                    {
                     }
                 }
                 break;
 
 
-            default:
-                Debug.LogError("Enemey " + transform.name + " has no state");
+            default: 
                 break;
         }
     }
     private void changeState(EnemyState state)
     {
-        
-        Debug.Log("Change state to " + state.ToString());
+         
         this.state = state;
     }
     private bool seeTheTarget(Transform target)
@@ -94,11 +107,18 @@ public class EnemyController : MonoBehaviour
         return false;
     }
 
-    // Update is called once per frame
+    private RaycastHit2D[] results;
     void Update()
     {
         if(canMove)
             MoveToPosition(target.transform.position);
+
+        //isGrounded = Physics2D.CircleCast(getPosition(), 0.2f, getPosition() + Vector2.down);
+        isGrounded = Physics2D.Raycast(getPosition(), Vector2.down, 1f);
+        Debug.DrawRay(getPosition(), Vector2.down, Color.yellow);
+        //Physics2D.RaycastNonAlloc(getPosition(), Vector2.down,results);
+        //isGrounded = hit.collider.transform.CompareTag("Floor");
+         
     }
     private void FixedUpdate()
     {
@@ -111,12 +131,21 @@ public class EnemyController : MonoBehaviour
 
     public void MoveToPosition(Vector2 targetPosition)
     {
+        Debug.DrawLine(transform.position, targetPosition, Color.green);
         if (!isOnTarget(targetPosition))
         {
-            var _direction = (targetPosition - getPosition()).normalized;
-            Debug.DrawLine(getPosition(), new Vector2(getPosition().x +_direction.x, getPosition().y), Color.red);
+            Debug.Log("NOT IN TARGET YEEEEEEEEEEEEEEEEEEET");
+            var _direction = (targetPosition - getPosition());  
+            Debug.DrawLine(transform.position,  getPosition() + _direction, Color.magenta);
             // _rb2D.velocity = new Vector2(_direction.x * movementSpeed, _rb2D.velocity.y);
-            transform.position += (new Vector3(_direction.x, _direction.y, 0) * movementSpeed) * Time.deltaTime;
+            //transform.position += new Vector3(_direction.x * movementSpeed * Time.deltaTime, transform.position.y,
+                //transform.position.z);
+            //transform.position += (new Vector3(_direction.x, getPosition().y, 0) * movementSpeed) * Time.deltaTime;
+            //transform.position+= new Vector3(_direction.x * 1f * Time.deltaTime,transform.position.y);
+            if (_direction.y >= 1 && isGrounded)
+            {
+                Jump();
+            }
         }
         else
         {
@@ -125,6 +154,24 @@ public class EnemyController : MonoBehaviour
         
     }
 
+    void Patrol()
+    {
+        if (Physics2D.Raycast(getPosition(), Vector2.left,1f, wallMask ) || Physics2D.Raycast(getPosition(), Vector2.right,1f, wallMask ))
+        {
+            ToggleDirection();
+        }
+        MoveToPosition(getPosition() + movementDirection);
+    }
+
+    private void ToggleDirection()
+    {
+        movementDirection *= -1;
+    }
+
+    private void Jump()
+    {
+        _rb2D.AddForce(Vector2.up * JumpForce,ForceMode2D.Impulse);
+    }
     private bool isOnTarget(Vector2 target)
     {
         Vector2 offset = target - getPosition();
