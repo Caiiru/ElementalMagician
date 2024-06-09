@@ -9,20 +9,16 @@ TagManager:
   - Collectable
   - ExitRight
   - Floor
-  
-
-  - ExitRight
-  - Floor
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Entity
+  - 
   - Water
   - UI
-  - Skill
-  - Obstacle
-  - Player
+  - PlayerAndFloor
+  - Obstacles
+  - 
   - 
   - 
   - 
@@ -49,10 +45,4 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
-    locked: 0
-  - name: Player
-    uniqueID: 3025739961
-    locked: 0
-  - name: Foreground
-    uniqueID: 3937400287
     locked: 0

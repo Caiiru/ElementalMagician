@@ -86,13 +86,13 @@ public class LevelGenerator : MonoBehaviour
 
             if (!roomPlaced)
             {
-                Debug.LogError("Falha ao colocar o grid após tentativas máximas.");
+                //Debug.LogError("Falha ao colocar o grid após tentativas máximas.");
                 break;
             }
 
             if (totalRoomsGenerated >= numberOfRooms)
             {
-                Debug.Log($"Número total de grids atingido: {totalRoomsGenerated}");
+                //Debug.Log($"Número total de grids atingido: {totalRoomsGenerated}");
                 break;
             }
         }
@@ -105,7 +105,7 @@ public class LevelGenerator : MonoBehaviour
     {
         if (starterRoom == null)
         {
-            Debug.LogError("grid inicial não está atribuído.");
+           // Debug.LogError("grid inicial não está atribuído.");
             return;
         }
 
@@ -116,7 +116,7 @@ public class LevelGenerator : MonoBehaviour
 
         if (connectionPointsContainer == null)
         {
-            Debug.LogError("O grid inicial está sem o empty 'ConnectionPoints'.");
+            //Debug.LogError("O grid inicial está sem o empty 'ConnectionPoints'.");
             Destroy(starter);
             return;
         }
@@ -129,7 +129,7 @@ public class LevelGenerator : MonoBehaviour
 
         if (!connectionPointsDict.ContainsKey("RightDown"))
         {
-            Debug.LogError("O grid inicial não possui um ponto de conexão 'RightDown'.");
+           // Debug.LogError("O grid inicial não possui um ponto de conexão 'RightDown'.");
             Destroy(starter);
             return;
         }
@@ -142,7 +142,7 @@ public class LevelGenerator : MonoBehaviour
     {
         if (endRoom == null)
         {
-            Debug.LogError("grid final não está atribuído.");
+          //  Debug.LogError("grid final não está atribuído.");
             return;
         }
 
@@ -190,7 +190,7 @@ public class LevelGenerator : MonoBehaviour
 
         if (connectionPointsContainer == null)
         {
-            Debug.LogError("Preset está sem o empty 'ConnectionPoints'.");
+           // Debug.LogError("Preset está sem o empty 'ConnectionPoints'.");
             return false;
         }
 
@@ -211,7 +211,7 @@ public class LevelGenerator : MonoBehaviour
         Vector3 offset = currentConnectionPoint.position - (preset.transform.position + selectedConnectionPoint.localPosition);
         preset.transform.position += offset;
 
-        Debug.Log($"Colocando o preset em: {preset.transform.position} com deslocamento: {offset}");
+        //Debug.Log($"Colocando o preset em: {preset.transform.position} com deslocamento: {offset}");
 
         foreach (var kvp in connectionPointsDict)
         {
@@ -228,16 +228,21 @@ public class LevelGenerator : MonoBehaviour
 
     void SpawnEnemies(GameObject preset)
 {
+    Debug.Log("Enemy spawn function ");
     Transform enemySpawnPoints = preset.transform.Find("EnemySpawnPoints");
     if (enemySpawnPoints != null && enemyPrefabs != null && enemyPrefabs.Count > 0)
     {
         foreach (Transform spawnPoint in enemySpawnPoints)
         {
             // Inimigos nos spawnpoints
-            if (Random.value > 0.5f)
+            if (Random.value > 0.2f)
             {
                 int randomIndex = Random.Range(0, enemyPrefabs.Count);
-                Instantiate(enemyPrefabs[randomIndex], spawnPoint.position, Quaternion.identity);
+                var enemyInstance = Instantiate(enemyPrefabs[randomIndex], spawnPoint.position, Quaternion.identity);
+                Debug.Log("Spawn Enemy ");
+                //enemyInstance.transform.SetParent(EnemyManager.instance.getManager().transform);
+                enemyInstance.transform.SetParent(preset.transform);
+                EnemyManager.instance.AddEnemy(enemyInstance);
             }
         }
     }
