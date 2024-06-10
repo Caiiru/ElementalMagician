@@ -3,12 +3,10 @@ using UnityEngine.UIElements;
 
 public class CameraController : MonoBehaviour
 {
-    private Transform target; // Target to follow (e.g., player)
     private Vector3 targetPosition; // Target position for smooth transition
     private bool isTransitioning = false; // Flag to indicate if a transition is in progress
     private float transitionStartTime; // Time when the transition started
     private float transitionDuration; // Duration of the transition
-    public GameObject BackgroundToDuplicate;
 
     public void SmoothTransition(Vector3 position, float duration)
     {
