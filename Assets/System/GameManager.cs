@@ -12,8 +12,7 @@ namespace System
         public PlayerEntity playerEntity;
         public GameObject player;
 
-        public GameObject path;
-        public AstarPath pathfind;
+        public GameObject path; 
 
         [Header("Presets")] [SerializeField] 
         private GameObject firstPreset;
@@ -25,12 +24,14 @@ namespace System
         public GameObject winGO;
         [Header("GAME")] public GameState state;
 
-        public GameObject[] enemies;
+        public List<GameObject> enemies;
 
         private Vector3 playerStartPosition;
+
+        public AstarPath pathfind;
         private void Start()
         {
-            CheckState();
+            ChangeState(GameState.PreStart); 
             
  
 
@@ -41,16 +42,28 @@ namespace System
         {
             if (Input.GetKeyDown(KeyCode.F1))
             {
-                player.transform.position = playerStartPosition;
+                player.transform.position = playerStartPosition; 
+                player.GetComponent<PlayerController>().getStats().canMove = true;
             }if (Input.GetKeyDown(KeyCode.F2))
-            {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            {  
+                SceneManager.LoadScene("MainMenu");
             }
+        } public void EnemyDie(GameObject enemy)
+        {
+            int i = 0;
+            foreach (var _enemy in enemies)
+            { 
+                if (_enemy == enemy)
+                {
+                    enemies.RemoveAt(i);
+                }
+
+                i++;
+            }             
         }
 
         public void ChangeState(GameState _state)
-        {
-            Debug.Log("Changing state {state} to {_state}");
+        { 
             this.state = _state;
             
             CheckState();
@@ -59,32 +72,54 @@ namespace System
         public void CheckState()
         {
             if (state == GameState.PreStart)
-            {
-                path = GameObject.FindGameObjectWithTag("Pathfind");
-                pathfind = path.GetComponent<AstarPath>();
-                firstPreset = LevelGenerator.instance.GetPresetByNumber(0);
-                currentPreset = firstPreset;
-                path.transform.position = currentPreset.transform.position;
-                pathfind.Scan();
-                player.GetComponent<PlayerController>().getStats().canMove = false;
+            { 
+                firstPreset = LevelGenerator.instance.GetPresetByNumber(0);  
                 playerStartPosition = player.transform.position;
+                ChangeState(GameState.Starting);
             }
 
             if (state == GameState.Starting)
             {
-                player.GetComponent<PlayerController>().getStats().canMove = true;
-                enemies = GameObject.FindGameObjectsWithTag("Entity");
+                pathfind.Scan();
+                if (!pathfind.isScanning)
+                { 
+                    var _enemies = GameObject.FindGameObjectsWithTag("Entity");
+                    foreach (var enemy in _enemies)
+                    {
+                        if (enemy.GetComponent<EnemyEntity>().getCurrentHealth() > 1)
+                        { 
+                            enemies.Add(enemy);
+                            
+                        }
+                    }
+
+                    ChangeState(GameState.Game);
+                }
+                else
+                { 
+                    Debug.Log("Is Scanning");
+                    CheckState();
+                }
+                
             }
 
             if (state == GameState.GameOver)
             {
-                gameoverGO.SetActive(true);
+                StartCoroutine(GameOver());
+                gameoverGO.SetActive(true); 
             }
 
             if (state == GameState.Win)
             {
-                winGO.SetActive(true);
+                winGO.SetActive(true); 
+                StartCoroutine(GameOver());
             }
+        }
+
+        IEnumerator GameOver()
+        {
+            yield return new WaitForSeconds(5f);
+            SceneManager.LoadScene("MainMenu");
         }
 
         public void ChangeLevel(Vector3 direction)
@@ -108,7 +143,7 @@ namespace System
                 Debug.Log("No Camera");
             }
 
-            if (enemies.Length <= 0 && (state == GameState.Game || state==GameState.Game))
+            if (enemies.Count <= 0 && (state == GameState.Game || state==GameState.Game))
             {
                 ChangeState(GameState.Win);
             }
@@ -145,7 +180,7 @@ namespace System
             else
                 instance = this;
             
-            DontDestroyOnLoad(this);
+            //DontDestroyOnLoad(this);
 
             state = GameState.PreStart;
             player = GameObject.FindGameObjectWithTag("Player");
@@ -159,6 +194,8 @@ namespace System
         
         #endregion
     }
+    
+   
     
      
 }

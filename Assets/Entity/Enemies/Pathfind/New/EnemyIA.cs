@@ -75,8 +75,10 @@ public class EnemyIA : MonoBehaviour
 
     private void UpdatePath()
     {
-        if(seeker.IsDone() && followEnabled && TargetInDistance() && HasTarget())
+        if (seeker.IsDone() && followEnabled && TargetInDistance() && HasTarget())
+        { 
             seeker.StartPath(_rigidbody2D.position, target.position, OnPathComplete);
+        }
     }
 
     private void OnPathComplete(Path p)
@@ -90,11 +92,11 @@ public class EnemyIA : MonoBehaviour
 
     private void Attack()
     {
-        animator.SetTrigger("Attack");
         if (!canFly)
-            MeleeAttack();
+            StartCoroutine(MeleeAttack());
         else
-            StartCoroutine(RangedAttack());
+            RangedAttack();
+        //StartCoroutine(RangedAttack());
         /*
         if (colinfo != null & colinfo.GetComponent<Entity>())
         {
@@ -109,13 +111,12 @@ public class EnemyIA : MonoBehaviour
         */
     }
 
-    private void MeleeAttack()
+    IEnumerator MeleeAttack()
     {
         //animator.SetTrigger("Attack");
         Vector3 pos = transform.position;
         pos += transform.right * attackOffset.x;
         pos += transform.up * attackOffset.y;
-
         //Collider2D colinfo = Physics2D.OverlapCircle(pos, attackRange, attackMask);
         // Collider2D colinfo = Physics2D.OverlapCircle(
         //   transform.position + new Vector3(GetLookDirection().x + attackOffset.x, attackOffset.y), attackRange);
@@ -123,8 +124,12 @@ public class EnemyIA : MonoBehaviour
             Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y + transform.position.y / 4),
                 GetLookDirection(), attackRange,
                 attackMask);
+        
         if (hitInfo.transform != null && hitInfo.transform.GetComponent<Entity>())
         {
+            
+            animator.SetTrigger("Attack");
+            yield return new WaitForSeconds(1f);
             var entityInfo = hitInfo.transform.GetComponent<Entity>();
             if (entityInfo == GameManager.GetInstance().GetPlayerEntity())
             {
@@ -134,18 +139,20 @@ public class EnemyIA : MonoBehaviour
         }
     }
 
-    IEnumerator RangedAttack()
+    void RangedAttack()
     {
         Vector3 direction = (target.position - transform.position).normalized;
         var raycast = Physics2D.Raycast(transform.position, direction, attackRange, attackMask);
-        //Debug.DrawRay(transform.position, direction* attackRange, Color.magenta,2f);
-        //Debug.Log(raycast.transform.name); 
+        Debug.DrawRay(transform.position, direction* attackRange, Color.magenta,2f);
+        Debug.Log(raycast.transform.name); 
         if (raycast.transform == target)
         {
+            Debug.Log("I see enemy");
             if (projectile == null)
-                yield return null;
+                return;
             
-            yield return new WaitForSeconds(0.4f);
+            animator.SetTrigger("Attack");
+            //yield return new WaitForSeconds(1f);
             var _projectile = Instantiate(projectile, transform.position, Quaternion.identity);
             if(_projectile.GetComponent<CrystalBall_Projectile_Script>())
                 _projectile.GetComponent<CrystalBall_Projectile_Script>().CreateProjectile(transform.position,direction,_stats.attackDamage,
