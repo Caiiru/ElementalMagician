@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class CameraController : MonoBehaviour
 {
@@ -7,6 +8,7 @@ public class CameraController : MonoBehaviour
     private bool isTransitioning = false; // Flag to indicate if a transition is in progress
     private float transitionStartTime; // Time when the transition started
     private float transitionDuration; // Duration of the transition
+    public GameObject BackgroundToDuplicate;
 
     public void SmoothTransition(Vector3 position, float duration)
     {
@@ -15,6 +17,7 @@ public class CameraController : MonoBehaviour
         transitionDuration = duration;
         transitionStartTime = Time.time;
         isTransitioning = true;
+        
     }
 
     void Update()
@@ -29,7 +32,7 @@ public class CameraController : MonoBehaviour
             transform.position = Vector3.Lerp(transform.position, targetPosition, t);
 
             // Check if the transition is complete
-            if (t >= 1.0f)
+            if (t >= transitionDuration)
             {
                 // End the transition
                 isTransitioning = false;
