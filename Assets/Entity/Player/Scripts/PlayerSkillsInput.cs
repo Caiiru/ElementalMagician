@@ -48,7 +48,7 @@ public class PlayerSkillsInput : MonoBehaviour
 
         baseScale = fireSprite.transform.localScale;
 
-        _playerStats = GameManager.getInstance().getPlayerEntity().transform.GetComponent<PlayerController>()
+        _playerStats = GameManager.GetInstance().GetPlayerEntity().transform.GetComponent<PlayerController>()
             .getStats();
         
         resetDisplay();
@@ -69,7 +69,11 @@ public class PlayerSkillsInput : MonoBehaviour
 
     Vector3 GetMousePosition()
     {
-        return Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        if (Camera.main != null) return Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        else
+        {
+            return Vector3.zero;
+        }
     }
 
     void GatherElementInput()

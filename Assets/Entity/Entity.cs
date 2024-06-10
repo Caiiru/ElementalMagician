@@ -72,7 +72,14 @@ public class Entity : MonoBehaviour
         if (isDead())
         {
             current_HP = 0;
-            Destroy(this.gameObject);
+            if(this != GameManager.GetInstance().GetPlayerEntity())
+                Destroy(this.gameObject);
+            else
+            {
+                this.transform.gameObject.SetActive(false);
+                
+                GameManager.GetInstance().ChangeState(GameState.GameOver);
+            }
         }
     }
 
@@ -88,7 +95,7 @@ public class Entity : MonoBehaviour
 
     public virtual int CalculateDamage(int value, Element _type)
     {
-
+         
         var weaknessInElement = ElementManager.GetInstance().getElementByEnum(stats.elementalWeakness);
         var resistanceInElement = ElementManager.GetInstance().getElementByEnum(stats.elementalResistance);
         var valueToReturn = value;
@@ -100,9 +107,8 @@ public class Entity : MonoBehaviour
 
         if (resistanceInElement == _type)
         {
-            valueToReturn = 0;
-        }
-        
+            valueToReturn /=2;
+        } 
         return valueToReturn;
     }
 

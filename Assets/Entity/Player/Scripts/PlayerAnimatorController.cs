@@ -8,14 +8,14 @@ using TarodevController;
 public class PlayerAnimatorController : MonoBehaviour
 {
     Animator _animator;
-    PlayerController _player;
+    [SerializeField]PlayerController _player;
     [SerializeField] private float _playerMovementSpeedX;
     [SerializeField] private bool _debugBoolean;
     
     void Start()
     {
         _animator = GetComponentInChildren<Animator>();
-        _player = GameManager.getInstance().playerEntity.transform.GetComponent<PlayerController>();
+        _player = GameManager.GetInstance().playerEntity.transform.GetComponent<PlayerController>();
         //_animator.SetBool(0, true);
     }
 

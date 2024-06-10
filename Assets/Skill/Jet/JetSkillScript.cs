@@ -31,7 +31,7 @@ public class JetSkillScript : Skill_DamageSkill
 
         base.Create(spawnPoint,direction);
         _direction = direction;
-        playerStats = GameManager.getInstance().getPlayerEntity()
+        playerStats = GameManager.GetInstance().GetPlayerEntity()
            .gameObject.GetComponent<PlayerController>().getStats();
 
         _spawnPoint = spawnPoint;
@@ -40,7 +40,7 @@ public class JetSkillScript : Skill_DamageSkill
         wasCreated = true;
         skillcooldownTime = _stats.TimeTick;
         _particleSystem.Play();
-        GameManager.getInstance().getPlayerEntity().gameObject.GetComponent<PlayerController>().ChangeMovementSpeedByMultiply(.2f); // Muda pra 20% da velocidade atual
+        GameManager.GetInstance().GetPlayerEntity().gameObject.GetComponent<PlayerController>().ChangeMovementSpeedByMultiply(.2f); // Muda pra 20% da velocidade atual
         StartCooldown(99f); // set to 99 because was bugging and not work the cooldown
         if (_stats.SkillDuration != 0)
             _duration = _stats.SkillDuration;
@@ -61,8 +61,8 @@ public class JetSkillScript : Skill_DamageSkill
         if (Input.GetButton("Fire1") && _duration > 0)
         { 
             changePositionAndRotation(_spawnPoint.position,
-                GameManager.getInstance().
-                getPlayerEntity().gameObject.GetComponent<PlayerController>()
+                GameManager.GetInstance().
+                GetPlayerEntity().gameObject.GetComponent<PlayerController>()
                 .getStats().aimingDirection);
 
             if (skillcooldownTime > _stats.TimeTick)
@@ -86,7 +86,7 @@ public class JetSkillScript : Skill_DamageSkill
         {
             playerStats.isAiming = false;
             //playerStats.canMove = true;
-            GameManager.getInstance().getPlayerEntity().gameObject.GetComponent<PlayerController>().ChangeMovementSpeedByMultiply(5); // Volta ao normal, 100%
+            GameManager.GetInstance().GetPlayerEntity().gameObject.GetComponent<PlayerController>().ChangeMovementSpeedByMultiply(5); // Volta ao normal, 100%
             StartCooldown();
             Destroy(this.gameObject);
         }

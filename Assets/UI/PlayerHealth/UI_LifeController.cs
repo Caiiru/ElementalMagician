@@ -17,7 +17,7 @@ public class UI_LifeController : MonoBehaviour
     public List<GameObject> hearts;
     void Start()
     { 
-        _entity = GameManager.getInstance().getPlayerEntity();
+        _entity = GameManager.GetInstance().GetPlayerEntity();
         if (_entity)
         {
             _playerEntity = _entity.transform.GetComponentInParent<IPlayerEntity>();
@@ -28,10 +28,10 @@ public class UI_LifeController : MonoBehaviour
         }
         
        
-        _player = GameManager.getInstance().getPlayerEntity();
+        _player = GameManager.GetInstance().GetPlayerEntity();
         if (_player)
         {  
-            howMuchHearts = (GameManager.getInstance().getPlayerEntity().playerStats.max_HP)/2;
+            howMuchHearts = (GameManager.GetInstance().GetPlayerEntity().playerStats.max_HP)/2;
         }
         CreateHeart(howMuchHearts);
     }
