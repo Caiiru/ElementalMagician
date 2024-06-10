@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7213749408944884572}
   - component: {fileID: 1775670353608324118}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Aim
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -58,7 +58,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6762759208598427364}
   - component: {fileID: 2707466186308843762}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Skills
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -105,7 +105,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9021156362177382038}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: FireElement
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -138,7 +138,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7047665700923385891}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: WaterElement
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -172,7 +172,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2524127209423501232}
   - component: {fileID: 1706819434140397610}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: FireElement_Border
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -257,7 +257,7 @@ GameObject:
   - component: {fileID: 2258096398879163192}
   - component: {fileID: 5099954703823951285}
   - component: {fileID: 8804091445689526575}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -363,7 +363,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6667202497079450586}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: SpawnPosition
   m_TagString: Untagged
   m_Icon: {fileID: 8418204508859773708, guid: 0000000000000000d000000000000000, type: 0}
@@ -394,7 +394,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2575792237958301480}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: AirElement
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -429,7 +429,7 @@ GameObject:
   - component: {fileID: 8148681288979628350}
   - component: {fileID: 7134832046971461428}
   - component: {fileID: 6218605507039434722}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: HandWand_Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -534,7 +534,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6281742888389973456}
   - component: {fileID: 4371791924098664603}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Art
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -582,7 +582,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2681875395209076410}
   - component: {fileID: 3169250483224266801}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Hat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -667,7 +667,7 @@ GameObject:
   - component: {fileID: 5298786337355398207}
   - component: {fileID: 5298786337355398205}
   - component: {fileID: 5298786337355398206}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Launch Particles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5553,7 +5553,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5298786337391745516}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Dash Ring
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5587,7 +5587,7 @@ GameObject:
   - component: {fileID: 5298786337573764010}
   - component: {fileID: 5298786337573764008}
   - component: {fileID: 5298786337573764009}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Jump Particles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10475,7 +10475,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5298786337870702431}
   - component: {fileID: 5298786337870702430}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: TrailRenderer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10621,7 +10621,7 @@ GameObject:
   - component: {fileID: 5298786338100201982}
   - component: {fileID: 5298786338100201980}
   - component: {fileID: 5298786338100201981}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10727,7 +10727,7 @@ GameObject:
   - component: {fileID: 5298786338269364277}
   - component: {fileID: 5298786338269364283}
   - component: {fileID: 5298786338269364276}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Double Jump Particles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15615,7 +15615,7 @@ GameObject:
   - component: {fileID: 5298786338421271209}
   - component: {fileID: 5298786338421271215}
   - component: {fileID: 5298786338421271208}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: DashRing Particles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20503,7 +20503,7 @@ GameObject:
   - component: {fileID: 5298786338466529029}
   - component: {fileID: 5298786338466529035}
   - component: {fileID: 5298786338466529028}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Move Particles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25331,7 +25331,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5298786338696997898}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Particles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25369,7 +25369,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5298786339056416573}
   - component: {fileID: 5298786339056416572}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Visual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25432,7 +25432,7 @@ GameObject:
   - component: {fileID: 5298786339202677075}
   - component: {fileID: 5298786339202677073}
   - component: {fileID: 5298786339202677074}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Land Particles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30320,7 +30320,7 @@ GameObject:
   - component: {fileID: 5298786339266612263}
   - component: {fileID: 5298786339266612261}
   - component: {fileID: 5298786339266612262}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Dash Particles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35148,7 +35148,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3004887278605955615}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: EntityDamageText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35181,7 +35181,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8292820262082717661}
   - component: {fileID: 7917848943245436160}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: FireElement_Icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35266,7 +35266,7 @@ GameObject:
   - component: {fileID: 7740021342076423024}
   - component: {fileID: 4896381254265331820}
   - component: {fileID: 8756761951963587868}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: _damageText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35401,7 +35401,7 @@ GameObject:
   m_Component:
   - component: {fileID: 700158303046772694}
   - component: {fileID: 6678214360812131933}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: WaterElement_Water
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35485,7 +35485,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9138997846241012011}
   - component: {fileID: 6556018701727192278}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: AirElement_Border
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35569,7 +35569,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1213141447402195859}
   - component: {fileID: 6647955795323523238}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: WaterElement_Border
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35655,7 +35655,7 @@ GameObject:
   - component: {fileID: 2170252481234589563}
   - component: {fileID: 5261265546370207736}
   - component: {fileID: 4032862498781813399}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35758,7 +35758,7 @@ GameObject:
   - component: {fileID: 8490022466277096571}
   - component: {fileID: 8490022466277096570}
   - component: {fileID: 8490022466277096569}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Player-v2
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -35892,7 +35892,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1952639580270129537}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: ElementVisual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35927,7 +35927,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1650216415040879608}
   - component: {fileID: 1615276850425111702}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: AirElement_Icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}

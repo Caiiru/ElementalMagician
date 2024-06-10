@@ -53,6 +53,12 @@ public class PlayerEntity : Entity, IPlayerEntity
         }
     }
 
+    public override void Heal(int value, Element elementType)
+    {
+        base.Heal(value, elementType);
+        playerTakeDamage?.Invoke(getCurrentHealth());
+    }
+
     public override void setStats(EntityStats _stats)
     { 
         base.setStats(_stats);

@@ -7,24 +7,35 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuScript : MonoBehaviour
 {
-    
+    public bool isSameScene;
+    public String firstScene;
+    private bool start;
     void Start()
     {
-        
+        start = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.KeypadEnter) || Input.GetMouseButton(0) ||
+        
+        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.KeypadEnter) || Input.GetMouseButtonDown(0) ||
             Input.GetMouseButton(1))
         {
-            if (GameManager.GetInstance().state == GameState.PreStart)
+            if (isSameScene && !start)
             {
-                
-                GameManager.GetInstance().ChangeState(GameState.Starting);
-                this.transform.gameObject.SetActive(false);
+                if (GameManager.GetInstance().state == GameState.PreStart)
+                {
+               
+                    GameManager.GetInstance().ChangeState(GameState.Starting);
+                    this.transform.gameObject.SetActive(false);
+                }
             }
+            else
+            { 
+                SceneManager.LoadScene("LevelGeneration");
+            } 
+            start = true;
           
         }
     }
