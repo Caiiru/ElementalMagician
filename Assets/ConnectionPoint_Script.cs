@@ -42,7 +42,7 @@ public class ConnectionPoint_Script : MonoBehaviour
     {
         if (other.transform.CompareTag("Player"))
         { 
-            //GameManager.GetInstance().ChangeLevel(GetDirection());
+            GameManager.GetInstance().ChangeLevel(GetDirection());
         }
     }
 }
