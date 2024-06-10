@@ -1,5 +1,7 @@
+using System;
 using UnityEngine;
 using System.Collections.Generic;
+using Random = UnityEngine.Random;
 
 public class LevelGenerator : MonoBehaviour
 {
@@ -24,10 +26,13 @@ public class LevelGenerator : MonoBehaviour
         { "Down", "Up" } // Direções opostas: Baixo -> Cima
     };
 
+    public List<GameObject> spawnedPresets = new List<GameObject>();
+
     void Start()
     {
         // Inicia o processo de geração do nível quando o jogo começa
-        GenerateLevel();
+        //InvokeRepeating("GenerateLevel",2,2);
+      
     }
 
     void GenerateLevel()
@@ -62,6 +67,7 @@ public class LevelGenerator : MonoBehaviour
                     // Último grid antes do grid final
                     if (PositionPreset(preset, currentConnectionPoint, "RightDown"))
                     {
+                        
                         roomPlaced = true;
                         totalRoomsGenerated++;
                     }
@@ -110,9 +116,11 @@ public class LevelGenerator : MonoBehaviour
         }
 
         GameObject starter = Instantiate(starterRoom);
+        spawnedPresets.Add(starterRoom);
         starter.transform.position = Vector3.zero; // Coloca o grid inicial na origem
 
         Transform connectionPointsContainer = starter.transform.Find("ConnectionPoints");
+        //SetCurrentPresetInConnectionPoints(connectionPointsContainer,starter);
 
         if (connectionPointsContainer == null)
         {
@@ -154,8 +162,10 @@ public class LevelGenerator : MonoBehaviour
             if (connectionPoints[i].direction == "RightDown")
             {
                 GameObject end = Instantiate(endRoom);
+                spawnedPresets.Add(endRoom);
                 if (PositionPreset(end, connectionPoints[i]))
                 {
+                    //SetCurrentPresetInConnectionPoints(end.transform.Find("ConnectionPoints"),end);
                     endRoomPlaced = true;
                     break;
                 }
@@ -208,6 +218,7 @@ public class LevelGenerator : MonoBehaviour
         }
 
         Transform selectedConnectionPoint = connectionPointsDict[targetDirection];
+        //SetCurrentPresetInConnectionPoints(preset.transform.Find("ConnectionPoints"),preset);
         Vector3 offset = currentConnectionPoint.position - (preset.transform.position + selectedConnectionPoint.localPosition);
         preset.transform.position += offset;
 
@@ -221,6 +232,7 @@ public class LevelGenerator : MonoBehaviour
             }
         }
 
+        spawnedPresets.Add(preset);
         SpawnEnemies(preset);
 
         return true;
@@ -239,7 +251,7 @@ public class LevelGenerator : MonoBehaviour
             {
                 int randomIndex = Random.Range(0, enemyPrefabs.Count);
                 var enemyInstance = Instantiate(enemyPrefabs[randomIndex], spawnPoint.position, Quaternion.identity);
-                Debug.Log("Spawn Enemy ");
+                //Debug.Log("Spawn Enemy ");
                 //enemyInstance.transform.SetParent(EnemyManager.instance.getManager().transform);
                 enemyInstance.transform.SetParent(preset.transform);
                 EnemyManager.instance.AddEnemy(enemyInstance);
@@ -260,5 +272,62 @@ public class LevelGenerator : MonoBehaviour
             direction = dir;
         }
     }
+
+    public GameObject GetCurrentPreset()
+    {
+        return null;
+    }
+
+    public GameObject GetPresetByNumber(int value)
+    {
+        var i = 0;
+        foreach (var preset in spawnedPresets)
+        {
+            if (i == value)
+            {
+                return preset;
+            }
+            i++;
+            
+        }
+
+        return null;
+    }
+
+    private void SetCurrentPresetInConnectionPoints(Transform ConnectionHolder,GameObject preset)
+    {
+        var connections = ConnectionHolder.GetComponentsInChildren<ConnectionPoint_Script>();
+        foreach (var point in connections)
+        {
+            point.currentPreset = preset;
+        }
+    }
+
+    private void SetToPresetInConnectionPoints(Transform connectionHolder, GameObject preset)
+    {
+        var connections = connectionHolder.GetComponentsInChildren<ConnectionPoint_Script>();
+        foreach (var point in connections)
+        {
+            point.toPreset = preset;
+        }
+    }
+
+    #region Singleton
+
+    public static LevelGenerator instance;
+
+    private void Awake()
+    {
+        if (instance != this && instance != null)
+        {
+            Destroy(this);
+        }
+
+        instance = this;
+        
+        GenerateLevel();
+    }
+
+    #endregion
 }
 

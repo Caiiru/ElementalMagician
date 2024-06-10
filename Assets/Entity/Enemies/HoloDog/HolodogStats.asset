@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a7000c4745c51149a0676e4e0304c81, type: 3}
   m_Name: HolodogStats
   m_EditorClassIdentifier: 
-  max_HP: 0
-  current_HP: 0
-  EntityElement: 0
-  elementalWeakness: 0
+  max_HP: 6
+  current_HP: 6
+  EntityElement: 1
+  elementalWeakness: 4
   elementalResistance: 0
-  attackCooldown: 0
-  attackDamage: 0
-  JumpForce: 0
-  enemySprite: {fileID: 0}
+  attackCooldown: 4
+  attackDamage: 2
+  JumpForce: 3
+  enemySprite: {fileID: -971801729, guid: e0811e2ac30fe27408d1f0b89dcf6a11, type: 3}

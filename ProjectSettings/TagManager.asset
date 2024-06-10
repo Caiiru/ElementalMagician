@@ -9,11 +9,12 @@ TagManager:
   - Collectable
   - ExitRight
   - Floor
+  - Pathfind
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Enemy
   - Water
   - UI
   - PlayerAndFloor

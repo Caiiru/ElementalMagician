@@ -5982,6 +5982,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6899485789659346340}
   - component: {fileID: 1952718342183959123}
+  - component: {fileID: 4295051699649494683}
   m_Layer: 0
   m_Name: Up
   m_TagString: Untagged
@@ -6049,6 +6050,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &4295051699649494683
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5845792634031322794}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47c1fa4d1243cb84aabba63da293fbfc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentPreset: {fileID: 0}
+  toPreset: {fileID: 0}
 --- !u!1 &6152482744590614086
 GameObject:
   m_ObjectHideFlags: 0
@@ -8678,6 +8693,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2016552693596367666}
   - component: {fileID: 5745483560726715699}
+  - component: {fileID: 7416861049587550974}
   m_Layer: 0
   m_Name: RightDown
   m_TagString: Untagged
@@ -8745,3 +8761,17 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &7416861049587550974
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8310269472110582875}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47c1fa4d1243cb84aabba63da293fbfc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentPreset: {fileID: 0}
+  toPreset: {fileID: 0}

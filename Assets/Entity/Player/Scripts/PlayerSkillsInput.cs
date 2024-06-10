@@ -69,7 +69,11 @@ public class PlayerSkillsInput : MonoBehaviour
 
     Vector3 GetMousePosition()
     {
-        return Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        if (Camera.main != null) return Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        else
+        {
+            return Vector3.zero;
+        }
     }
 
     void GatherElementInput()

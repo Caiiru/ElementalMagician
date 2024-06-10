@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a7000c4745c51149a0676e4e0304c81, type: 3}
   m_Name: CrystalBallEntity
   m_EditorClassIdentifier: 
-  max_HP: 0
-  current_HP: 0
-  EntityElement: 0
-  elementalWeakness: 0
-  elementalResistance: 0
-  attackCooldown: 0
-  attackDamage: 0
+  max_HP: 99
+  current_HP: 99
+  EntityElement: 3
+  elementalWeakness: 4
+  elementalResistance: 3
+  attackCooldown: 4
+  attackDamage: 2
   JumpForce: 0
-  enemySprite: {fileID: 0}
+  enemySprite: {fileID: 537712192, guid: c4e7f0f123ac3bf4b91dcdbfc36b948a, type: 3}
