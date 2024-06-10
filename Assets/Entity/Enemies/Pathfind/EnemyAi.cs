@@ -46,6 +46,7 @@ public class EnemyAi : MonoBehaviour
         isOnCoolDown = false;
         enemyStats = GetComponent<EnemyEntity>().EnemyStats;
         InvokeRepeating("UpdatePath", 0f, pathUpdateSeconds);
+        target = GameManager.getInstance().GetPlayerTransform();
     }
 
     private void FixedUpdate()

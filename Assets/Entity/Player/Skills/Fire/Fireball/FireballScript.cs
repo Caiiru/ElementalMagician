@@ -44,9 +44,20 @@ public class FireballScript : Skill_DamageSkill
         print("Trigger " + other.name);
         if (other.transform.GetComponent<Entity>())
         {
-            var otherEntity = other.transform.GetComponent<Entity>();
-            otherEntity.takeDamage(_stats.SkillDamage,_stats.damageElement);
+            if (other.transform.GetComponent<Entity>() != GameManager.getInstance().GetPlayerEntity())
+            {
+                var otherEntity = other.transform.GetComponent<Entity>();
+                otherEntity.takeDamage(_stats.SkillDamage, _stats.damageElement);
+                 
+            }
         }
-        Destroy(this.gameObject);
+        if (other.transform.gameObject == GameManager.getInstance().GetPlayerEntity().transform.gameObject)
+        {
+            return;
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
     }
 }

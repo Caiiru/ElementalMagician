@@ -17,6 +17,7 @@ public class EntityStats : ScriptableObject
 
 }
 public enum EntityElement{
+    NONE,
     DEFAULT,
     AIR,
     FIRE,

@@ -2,12 +2,15 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using UnityEditor.Playables;
 using UnityEngine;
 
 public class EnemyEntity : Entity
 {
     [Header("Enemy Entity Settings")]
     public EnemyStats EnemyStats;
+    
+    
 
     
     public override void Start()
@@ -37,6 +40,8 @@ public class EnemyEntity : Entity
             if (!text.activeSelf)
             { 
                 text.transform.position = new Vector2(transform.position.x, transform.position.y+spawnYOffset);
+               
+                text.transform.localScale = new Vector3(1, 1, 1);
                 text.SetActive(true);
                 text.transform.GetChild(0).transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = _damage.ToString();
                 text.transform.GetChild(0).transform.GetChild(0).GetComponent<TextMeshProUGUI>().color =
@@ -61,6 +66,11 @@ public class EnemyEntity : Entity
             jet.setCanDamageFalse();
             print("TAKING DAMAGE FROM " + other.transform.name);
         }
+    }
+
+    public EnemyStats GetStats()
+    {
+        return EnemyStats;
     }
 
     

@@ -58,7 +58,7 @@ public class EnemyController : MonoBehaviour
                 changeState(EnemyState.Patrol);
                 break;
             case EnemyState.Patrol:
-                target = GameManager.getInstance().getPlayerEntity().transform;
+                target = GameManager.getInstance().GetPlayerEntity().transform;
                  Patrol();
                 if (seeTheTarget(target.transform))
                 {

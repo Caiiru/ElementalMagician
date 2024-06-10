@@ -48,7 +48,7 @@ public class PlayerSkillsInput : MonoBehaviour
 
         baseScale = fireSprite.transform.localScale;
 
-        _playerStats = GameManager.getInstance().getPlayerEntity().transform.GetComponent<PlayerController>()
+        _playerStats = GameManager.getInstance().GetPlayerEntity().transform.GetComponent<PlayerController>()
             .getStats();
         
         resetDisplay();

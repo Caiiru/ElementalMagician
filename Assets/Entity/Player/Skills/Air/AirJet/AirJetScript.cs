@@ -21,7 +21,7 @@ public class AirJetScript : JetSkillScript
     public override void Start()
     {
         base.Start();
-        _controller = GameManager.getInstance().getPlayerEntity().gameObject.GetComponent<PlayerController>();
+        _controller = GameManager.getInstance().GetPlayerEntity().gameObject.GetComponent<PlayerController>();
 
         damageCooldown = _stats.TimeTick*2;
     }

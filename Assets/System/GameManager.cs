@@ -7,7 +7,8 @@ namespace System
 {
     public partial class GameManager: MonoBehaviour
     {
-        public PlayerEntity playerEntity; 
+        public PlayerEntity playerEntity;
+        public GameObject player;
 
         public bool SetPlayerEntity(PlayerEntity _player)
         {
@@ -19,10 +20,15 @@ namespace System
             return true;
             
         }
-        public PlayerEntity getPlayerEntity()
+        public PlayerEntity GetPlayerEntity()
         { 
             return playerEntity;
-        } 
+        }
+
+        public Transform GetPlayerTransform()
+        {
+            return player.transform;
+        }
         
         #region Singleton
         private static GameManager instance;
