@@ -28,7 +28,7 @@ public class CrystalBall_Projectile_Script : MonoBehaviour
     {
         if (other.transform.GetComponent<Entity>())
         {
-            if (other.transform.GetComponent<Entity>() == GameManager.getInstance().GetPlayerEntity())
+            if (other.transform.GetComponent<Entity>() == GameManager.GetInstance().GetPlayerEntity())
             {
                 other.GetComponent<Entity>().takeDamage(_damage,_element);
             }

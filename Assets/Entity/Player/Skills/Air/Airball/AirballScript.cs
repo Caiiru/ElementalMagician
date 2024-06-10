@@ -34,7 +34,7 @@ public class AirballScript : Skill_DamageSkill
    {
       if (other.transform.GetComponent<Entity>())
       {
-         if (other.transform.GetComponent<Entity>() != GameManager.getInstance().GetPlayerEntity())
+         if (other.transform.GetComponent<Entity>() != GameManager.GetInstance().GetPlayerEntity())
          {
             var otherEntity = other.transform.GetComponent<Entity>();
          
@@ -47,7 +47,7 @@ public class AirballScript : Skill_DamageSkill
          }
         
       }
-      if (other.transform.gameObject != GameManager.getInstance().GetPlayerEntity().transform.gameObject)
+      if (other.transform.gameObject != GameManager.GetInstance().GetPlayerEntity().transform.gameObject)
       {
          Destroy(this.gameObject);
       }

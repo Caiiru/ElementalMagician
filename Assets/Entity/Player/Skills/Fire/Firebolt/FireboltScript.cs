@@ -50,7 +50,7 @@ public class FireboltScript : Skill_DamageSkill
         print("Trigger " + other.name);
         if (other.transform.GetComponent<Entity>())
         {
-            if (other.transform.GetComponent<Entity>() != GameManager.getInstance().GetPlayerEntity())
+            if (other.transform.GetComponent<Entity>() != GameManager.GetInstance().GetPlayerEntity())
             {
                 var otherEntity = other.transform.GetComponent<Entity>();
                 otherEntity.takeDamage(_stats.SkillDamage, _stats.damageElement);
@@ -58,7 +58,7 @@ public class FireboltScript : Skill_DamageSkill
                     .AddForce(_velocity.normalized * (_stats.SkillDamage), ForceMode2D.Impulse);
             }
         }
-        if (other.transform.gameObject != GameManager.getInstance().GetPlayerEntity().transform.gameObject)
+        if (other.transform.gameObject != GameManager.GetInstance().GetPlayerEntity().transform.gameObject)
         {
             Destroy(this.gameObject);
         }

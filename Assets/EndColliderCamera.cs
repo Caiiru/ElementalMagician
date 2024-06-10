@@ -20,7 +20,7 @@ public class DirectionalTransitionCollider : MonoBehaviour
             Debug.Log(targetPosition);
 
             // Call the camera control function to initiate the transition
-            Camera.main.GetComponent<CameraController>().SmoothTransition(targetPosition, transitionDuration);
+            //Camera.main.GetComponent<CameraController>().SmoothTransition(targetPosition, transitionDuration);
         }
     }
 }

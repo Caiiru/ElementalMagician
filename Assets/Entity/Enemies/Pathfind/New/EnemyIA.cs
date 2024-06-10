@@ -57,7 +57,7 @@ public class EnemyIA : MonoBehaviour
         _stats = this.GetComponent<EnemyEntity>().GetStats();
         seeker = GetComponent<Seeker>();
         _rigidbody2D = GetComponent<Rigidbody2D>();
-        target = GameManager.getInstance().GetPlayerTransform();
+        target = GameManager.GetInstance().GetPlayerTransform();
         if (HasTarget())
         {
             Debug.Log("Found Target");
@@ -126,7 +126,7 @@ public class EnemyIA : MonoBehaviour
         if (hitInfo.transform != null && hitInfo.transform.GetComponent<Entity>())
         {
             var entityInfo = hitInfo.transform.GetComponent<Entity>();
-            if (entityInfo == GameManager.getInstance().GetPlayerEntity())
+            if (entityInfo == GameManager.GetInstance().GetPlayerEntity())
             {
                 entityInfo.takeDamage(_stats.attackDamage,
                     ElementManager.GetInstance().getElementByEnum(_stats.EntityElement));
@@ -138,8 +138,8 @@ public class EnemyIA : MonoBehaviour
     {
         Vector3 direction = (target.position - transform.position).normalized;
         var raycast = Physics2D.Raycast(transform.position, direction, attackRange, attackMask);
-        Debug.DrawRay(transform.position, direction* attackRange, Color.magenta,2f);
-        Debug.Log(raycast.transform.name); 
+        //Debug.DrawRay(transform.position, direction* attackRange, Color.magenta,2f);
+        //Debug.Log(raycast.transform.name); 
         if (raycast.transform == target)
         {
             if (projectile == null)

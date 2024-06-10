@@ -13,8 +13,8 @@ public class PlayerEntity : Entity, IPlayerEntity
    
     public override void Awake()
     {
-        if(GameManager.getInstance() != null)
-            GameManager.getInstance().SetPlayerEntity(this);
+        if(GameManager.GetInstance() != null)
+            GameManager.GetInstance().SetPlayerEntity(this);
         base.Awake();
         
 

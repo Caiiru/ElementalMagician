@@ -72,11 +72,13 @@ public class Entity : MonoBehaviour
         if (isDead())
         {
             current_HP = 0;
-            if(this != GameManager.getInstance().GetPlayerEntity())
+            if(this != GameManager.GetInstance().GetPlayerEntity())
                 Destroy(this.gameObject);
             else
             {
                 this.transform.gameObject.SetActive(false);
+                
+                GameManager.GetInstance().ChangeState(GameState.GameOver);
             }
         }
     }

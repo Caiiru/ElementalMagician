@@ -22,12 +22,12 @@ public class CureScript : Skill_Utility
     public override void Create(Transform spawnPoint, Vector2 direction)
     { 
         transform.position = spawnPoint.position;
-        _playerEntity = GameManager.getInstance().GetPlayerEntity();
+        _playerEntity = GameManager.GetInstance().GetPlayerEntity();
         SkillName = _stats.SkillName;
-        playerStats = GameManager.getInstance().GetPlayerEntity()
+        playerStats = GameManager.GetInstance().GetPlayerEntity()
             .gameObject.GetComponent<PlayerController>().getStats();
         _spawnPoint = spawnPoint;
-        GameManager.getInstance().GetPlayerEntity().gameObject.
+        GameManager.GetInstance().GetPlayerEntity().gameObject.
             GetComponent<PlayerController>().ChangeMovementSpeedByMultiply(.2f); // Muda pra 20% da velocidade atual
         
         StartCooldown(99f);
@@ -67,7 +67,7 @@ public class CureScript : Skill_Utility
         }
         else
         {
-            GameManager.getInstance().GetPlayerEntity().gameObject.GetComponent<PlayerController>().ChangeMovementSpeedByMultiply(5); // Volta ao normal, 100%
+            GameManager.GetInstance().GetPlayerEntity().gameObject.GetComponent<PlayerController>().ChangeMovementSpeedByMultiply(5); // Volta ao normal, 100%
             StartCooldown();
             Debug.Log("Stop Cure");
             Destroy(this.gameObject);

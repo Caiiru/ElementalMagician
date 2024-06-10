@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a7000c4745c51149a0676e4e0304c81, type: 3}
   m_Name: CrystalBallEntity
   m_EditorClassIdentifier: 
-  max_HP: 99
-  current_HP: 99
+  max_HP: 6
+  current_HP: 6
   EntityElement: 3
   elementalWeakness: 4
   elementalResistance: 3

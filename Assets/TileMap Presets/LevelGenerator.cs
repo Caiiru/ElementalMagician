@@ -13,7 +13,7 @@ public class LevelGenerator : MonoBehaviour
     public float specialPresetsChance = 0.1f; // Probabilidade de um preset especial ser selecionado
     public List<GameObject> enemyPrefabs; // Lista de prefabs de inimigos para spawnar no nível
     public int maxRooms = 100; // Número máximo de grids para evitar loops infinitos
-
+    public int minRooms = 5;
     private List<ConnectionPoint> connectionPoints = new List<ConnectionPoint>(); // Lista para acompanhar os pontos de conexão disponíveis
 
     private readonly Dictionary<string, string> oppositeDirections = new Dictionary<string, string>
@@ -32,6 +32,7 @@ public class LevelGenerator : MonoBehaviour
     {
         // Inicia o processo de geração do nível quando o jogo começa
         //InvokeRepeating("GenerateLevel",2,2);
+        GameManager.GetInstance().SetLevelGenerator(this.gameObject);
       
     }
 
@@ -61,6 +62,8 @@ public class LevelGenerator : MonoBehaviour
                 GameObject preset = Random.value < specialPresetsChance && specialPresets.Count > 0 
                                     ? InstantiateRandomSpecialPreset() 
                                     : InstantiateRandomPreset();
+                
+                preset.transform.SetParent(this.transform);
 
                 if (totalRoomsGenerated == numberOfRooms - 1)
                 {
@@ -116,6 +119,7 @@ public class LevelGenerator : MonoBehaviour
         }
 
         GameObject starter = Instantiate(starterRoom);
+        starter.transform.SetParent(this.transform);
         spawnedPresets.Add(starterRoom);
         starter.transform.position = Vector3.zero; // Coloca o grid inicial na origem
 
@@ -162,6 +166,8 @@ public class LevelGenerator : MonoBehaviour
             if (connectionPoints[i].direction == "RightDown")
             {
                 GameObject end = Instantiate(endRoom);
+                
+                end.transform.SetParent(this.transform);
                 spawnedPresets.Add(endRoom);
                 if (PositionPreset(end, connectionPoints[i]))
                 {
