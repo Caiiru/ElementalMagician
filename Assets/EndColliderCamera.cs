@@ -36,7 +36,7 @@ public class DirectionalTransitionCollider : MonoBehaviour
             Vector3 targetPosition = Camera.main.transform.position + new Vector3(transitionAmountX, transitionAmountY, 0f);
 
             // Call the camera control function to initiate the transition
-            //Camera.main.GetComponent<CameraController>().SmoothTransition(targetPosition, transitionDuration);
+            Camera.main.GetComponent<CameraController>().SmoothTransition(targetPosition, transitionDuration);
         }
     }
 
