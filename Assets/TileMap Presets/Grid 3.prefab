@@ -4750,8 +4750,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47c1fa4d1243cb84aabba63da293fbfc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentPreset: {fileID: 0}
-  toPreset: {fileID: 0}
+  direction: 5
+  connectedRoom: {fileID: 0}
 --- !u!1 &2796205029760044444
 GameObject:
   m_ObjectHideFlags: 0
@@ -4875,8 +4875,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47c1fa4d1243cb84aabba63da293fbfc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentPreset: {fileID: 0}
-  toPreset: {fileID: 0}
+  direction: 2
+  connectedRoom: {fileID: 0}
 --- !u!1 &5895834663910180883
 GameObject:
   m_ObjectHideFlags: 0

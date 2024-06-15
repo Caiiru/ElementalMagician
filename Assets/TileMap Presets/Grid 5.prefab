@@ -8410,8 +8410,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47c1fa4d1243cb84aabba63da293fbfc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentPreset: {fileID: 0}
-  toPreset: {fileID: 0}
+  direction: 1
+  connectedRoom: {fileID: 0}
 --- !u!1 &6152482744590614086
 GameObject:
   m_ObjectHideFlags: 0
@@ -10600,8 +10600,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47c1fa4d1243cb84aabba63da293fbfc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentPreset: {fileID: 0}
-  toPreset: {fileID: 0}
+  direction: 5
+  connectedRoom: {fileID: 0}
 --- !u!1001 &3130750381904285478
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -1,48 +1,34 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class ConnectionPoint_Script : MonoBehaviour
+public class ConnectionPoint : MonoBehaviour
 {
-    public GameObject currentPreset;
-    public GameObject toPreset;
-    void Start()
+    // Define the direction of the connection point
+    public enum Direction
     {
-        
+        Up,
+        Down,
+        LeftUp,
+        LeftDown,
+        RightUp,
+
+        RightDown
     }
 
-    // Update is called once per frame
-    void Update()
+    // Direction of this connection point
+    public Direction direction;
+
+    // Reference to the connected room (if any)
+    public GameObject connectedRoom;
+
+    // Method to connect this point to another room
+    public void ConnectToRoom(GameObject room)
     {
-        
+        connectedRoom = room;
     }
 
-    private Vector3 GetDirection()
+    // Method to check if this point is connected to another room
+    public bool IsConnected()
     {
-        switch (transform.name)
-        {
-            case "RightDown":
-                return Vector3.right;
-                break;
-            case "LeftDown":
-                return Vector3.left;
-                break;
-            case "Up":
-                return Vector3.up;
-                break;
-            case "Down":
-                return Vector3.down;
-        }
-
-        return Vector3.zero;
-    }
-
-    private void OnTriggerEnter2D(Collider other)
-    {
-        if (other.transform.CompareTag("Player"))
-        { 
-            GameManager.GetInstance().ChangeLevel(GetDirection());
-        }
+        return connectedRoom != null;
     }
 }

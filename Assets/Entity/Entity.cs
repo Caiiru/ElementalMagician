@@ -75,7 +75,7 @@ public class Entity : MonoBehaviour
             if (this != GameManager.GetInstance().GetPlayerEntity())
             {
                 this.transform.gameObject.SetActive(false);
-                GameManager.GetInstance().EnemyDie(this.gameObject);
+                //GameManager.GetInstance().EnemyDie(this.gameObject);
             }
                
             else
