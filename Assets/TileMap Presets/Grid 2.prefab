@@ -90,8 +90,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47c1fa4d1243cb84aabba63da293fbfc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentPreset: {fileID: 0}
-  toPreset: {fileID: 0}
+  direction: 2
+  connectedRoom: {fileID: 0}
 --- !u!1 &4324193826703178621
 GameObject:
   m_ObjectHideFlags: 0
@@ -11000,8 +11000,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47c1fa4d1243cb84aabba63da293fbfc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentPreset: {fileID: 0}
-  toPreset: {fileID: 0}
+  direction: 4
+  connectedRoom: {fileID: 0}
 --- !u!1001 &2072943062469029834
 PrefabInstance:
   m_ObjectHideFlags: 0
