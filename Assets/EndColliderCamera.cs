@@ -4,7 +4,7 @@ using System.Collections;
 public class DirectionalTransitionCollider : MonoBehaviour
 {
     public float transitionAmountX = 39f; // Amount of transition in the specified X direction
-    public float transitionAmountY = 18f; // Amount of transition in the specified Y direction
+    public float transitionAmountY = 20f; // Amount of transition in the specified Y direction
     public float transitionDuration = 7.0f; // Duration of the transition
     public GameObject toDuplicate; // The parent GameObject containing the background to duplicate
     public float cooldownTime = 2.0f; // Time to wait before the trigger can be activated again
@@ -16,6 +16,7 @@ public class DirectionalTransitionCollider : MonoBehaviour
     {
         // Calculate the offset based on the specified transition amount
         offset = new Vector3(transitionAmountX, transitionAmountY, 0f);
+        Debug.Log("DirectionalTransitionCollider initialized with offset: " + offset);
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -34,6 +35,7 @@ public class DirectionalTransitionCollider : MonoBehaviour
             
             // Calculate the target position based on the specified direction
             Vector3 targetPosition = Camera.main.transform.position + new Vector3(transitionAmountX, transitionAmountY, 0f);
+            Debug.Log("Target camera position: " + targetPosition);
 
             // Call the camera control function to initiate the transition
             Camera.main.GetComponent<CameraController>().SmoothTransition(targetPosition, transitionDuration);
@@ -46,10 +48,11 @@ public class DirectionalTransitionCollider : MonoBehaviour
         GameObject newBackground = Instantiate(toDuplicate, toDuplicate.transform.position + offset, toDuplicate.transform.rotation);
 
         // Log a message to indicate that the background has been duplicated
-        Debug.Log("Background duplicated.");
+        Debug.Log("Background duplicated at position: " + (toDuplicate.transform.position + offset));
 
         // Remove the old background after the camera transition duration
-        Destroy(toDuplicate, (transitionDuration-4));
+        Destroy(toDuplicate, (transitionDuration - 4));
+        Debug.Log("Old background will be destroyed in: " + (transitionDuration - 4) + " seconds");
 
         // Update the reference to the duplicated background
         toDuplicate = newBackground;
@@ -59,11 +62,13 @@ public class DirectionalTransitionCollider : MonoBehaviour
     {
         // Set the cooldown as active
         isOnCooldown = true;
+        Debug.Log("Cooldown started for: " + cooldownTime + " seconds");
 
         // Wait for the cooldown time
         yield return new WaitForSeconds(cooldownTime);
 
         // Set the cooldown as inactive
         isOnCooldown = false;
+        Debug.Log("Cooldown ended");
     }
 }

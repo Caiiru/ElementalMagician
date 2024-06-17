@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2783740813120859071}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2126,7 +2126,7 @@ GameObject:
   - component: {fileID: 5193632669216194535}
   - component: {fileID: 5744801693946778349}
   - component: {fileID: 4893510388326015960}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: FloorTilemap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4636,7 +4636,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7246905735515661015}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ConnectionPoints
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4671,7 +4671,7 @@ GameObject:
   - component: {fileID: 5403515380817939547}
   - component: {fileID: 8776401997359164782}
   - component: {fileID: 3528661347192255563}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: RightDown
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4761,7 +4761,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4922614453529465974}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Tilemaps
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4796,7 +4796,7 @@ GameObject:
   - component: {fileID: 7905711205676435688}
   - component: {fileID: 6339542515127042385}
   - component: {fileID: 8538823847976247306}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: LeftUp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4886,7 +4886,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3168228908922766795}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: EnemySpawnPoints
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4919,7 +4919,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4272668717353213569}
   - component: {fileID: 9045859193599949629}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Grid 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4969,7 +4969,7 @@ GameObject:
   - component: {fileID: 8946750548565366662}
   - component: {fileID: 861815288618237664}
   - component: {fileID: 7636437715755384890}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: WalkableTilemap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10890,9 +10890,29 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4272668717353213569}
     m_Modifications:
+    - target: {fileID: 1927078610020999436, guid: 54c9195da6908b947a1cf1336026fdcf, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2234408449904582965, guid: 54c9195da6908b947a1cf1336026fdcf, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2484808370654162278, guid: 54c9195da6908b947a1cf1336026fdcf, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6507507096234192358, guid: 54c9195da6908b947a1cf1336026fdcf, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 6849090553714527273, guid: 54c9195da6908b947a1cf1336026fdcf, type: 3}
       propertyPath: m_Name
       value: StabBox
+      objectReference: {fileID: 0}
+    - target: {fileID: 6849090553714527273, guid: 54c9195da6908b947a1cf1336026fdcf, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 8997416622077623696, guid: 54c9195da6908b947a1cf1336026fdcf, type: 3}
       propertyPath: m_LocalPosition.x
@@ -10933,6 +10953,14 @@ PrefabInstance:
     - target: {fileID: 8997416622077623696, guid: 54c9195da6908b947a1cf1336026fdcf, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9124010771029761048, guid: 54c9195da6908b947a1cf1336026fdcf, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 9149233745951706176, guid: 54c9195da6908b947a1cf1336026fdcf, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

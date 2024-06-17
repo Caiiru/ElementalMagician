@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5870054904829811732}
   - component: {fileID: 5592175743877247247}
   - component: {fileID: 4194633589887329640}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: WalkableTilemap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5934,7 +5934,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3322324281402987739}
   - component: {fileID: 3003199286185554259}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Grid 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11653,7 +11653,7 @@ GameObject:
   - component: {fileID: 4530115897021270654}
   - component: {fileID: 5408846163764236804}
   - component: {fileID: 695384886567044994}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: LeftDown
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11743,7 +11743,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7784374034804343953}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: EnemySpawnPoints
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11775,7 +11775,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 691001678335710466}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ConnectionPoints
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11808,7 +11808,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3382849620642510035}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11841,7 +11841,7 @@ GameObject:
   - component: {fileID: 8249304083672920290}
   - component: {fileID: 3271201688535562154}
   - component: {fileID: 4198335958548501022}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: RightDown
   m_TagString: Untagged
   m_Icon: {fileID: 0}

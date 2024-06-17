@@ -140,33 +140,54 @@ public class EnemyIA : MonoBehaviour
     }
 
     void RangedAttack()
-    {
-        Vector3 direction = (target.position - transform.position).normalized;
-        var raycast = Physics2D.Raycast(transform.position, direction, attackRange, attackMask);
-        Debug.DrawRay(transform.position, direction* attackRange, Color.magenta,2f);
-        Debug.Log(raycast.transform.name); 
-        if (raycast.transform == target)
+{
+    Vector3 direction = (target.position - transform.position).normalized;
+
+    // Ensure the raycast only hits layers specified in attackMask
+    RaycastHit2D raycast = Physics2D.Raycast(transform.position, direction, attackRange, attackMask);
+    Debug.DrawRay(transform.position, direction * attackRange, Color.magenta, 2f);
+
+    if (raycast.collider != null)
         {
-            Debug.Log("I see enemy");
-            if (projectile == null)
-                return;
+            Debug.Log($"Raycast hit: {raycast.transform.name}");
             
-            animator.SetTrigger("Attack");
-            //yield return new WaitForSeconds(1f);
-            var _projectile = Instantiate(projectile, transform.position, Quaternion.identity);
-            if(_projectile.GetComponent<CrystalBall_Projectile_Script>())
-                _projectile.GetComponent<CrystalBall_Projectile_Script>().CreateProjectile(transform.position,direction,_stats.attackDamage,
-                    ElementManager.GetInstance().getElementByEnum(_stats.EntityElement),this.transform);
-            if (projectile.GetComponent<Projectile_Script>())
+            if (raycast.transform == target)
             {
-                _projectile.GetComponent<Projectile_Script>().CreateProjectile(transform.position,direction,_stats.attackDamage,
-                    ElementManager.GetInstance().getElementByEnum(_stats.EntityElement),this.transform);
+                Debug.Log("I see the target");
+
+                if (projectile == null)
+                    return;
+
+                animator.SetTrigger("Attack");
+
+                // Instantiate the projectile
+                var _projectile = Instantiate(projectile, transform.position, Quaternion.identity);
+
+                // Initialize the projectile based on its type
+                if (_projectile.GetComponent<CrystalBall_Projectile_Script>())
+                {
+                    _projectile.GetComponent<CrystalBall_Projectile_Script>().CreateProjectile(
+                        transform.position,
+                        direction,
+                        _stats.attackDamage,
+                        ElementManager.GetInstance().getElementByEnum(_stats.EntityElement),
+                        this.transform
+                    );
+                }
+                else if (_projectile.GetComponent<Projectile_Script>())
+                {
+                    _projectile.GetComponent<Projectile_Script>().CreateProjectile(
+                        transform.position,
+                        direction,
+                        _stats.attackDamage,
+                        ElementManager.GetInstance().getElementByEnum(_stats.EntityElement),
+                        this.transform
+                    );
+                }
             }
         }
-        
-        
-        
     }
+
 
     private void HandleAnimation()
     {
