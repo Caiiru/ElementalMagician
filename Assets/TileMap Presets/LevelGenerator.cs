@@ -1,58 +1,57 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Collections.Generic;
 
 public class LevelGenerator : MonoBehaviour
 {
-    public GameObject starterRoom; // Prefab for the initial room
-    public List<GameObject> endRooms; // List of end room prefabs for different connection requirements
-    public List<GameObject> tilemapPresets; // List of tilemap presets to use in level generation
-    public List<GameObject> specialPresets; // List of special presets that must have all connection points filled
-    public int numberOfRooms = 20; // Number of rooms to generate in the level
-    public float specialPresetsChance = 0f; // Probability of selecting a special preset
-    public List<GameObject> enemyPrefabs; // List of enemy prefabs to spawn in the level
-    public int maxRooms = 100; // Maximum number of rooms to avoid infinite loops
-    private List<Vector3> occupiedPositions = new List<Vector3>(); // List to track occupied room positions
-    private List<GameObject> generatedRooms = new List<GameObject>(); // List to track generated rooms
-    private List<ConnectionPoint> connectionPoints = new List<ConnectionPoint>(); // List to track available connection points
+    public GameObject starterRoom; 
+    public List<GameObject> endRooms; 
+    public List<GameObject> tilemapPresets; 
+    public List<GameObject> specialPresets; 
+    public int numberOfRooms = 20; 
+    public float specialPresetsChance = 0f; 
+    public List<GameObject> enemyPrefabs; 
+    public int maxRooms = 100; 
+    public int minimumRooms = 5; // Minimum number of rooms required
+
+    private List<Vector3> occupiedPositions = new List<Vector3>(); 
+    private List<GameObject> generatedRooms = new List<GameObject>(); 
+    private List<ConnectionPoint> connectionPoints = new List<ConnectionPoint>(); 
 
     private readonly Dictionary<string, string> oppositeDirections = new Dictionary<string, string>
     {
-        { "LeftUp", "RightUp" }, // Opposite directions: Left Up -> Right Up
-        { "RightUp", "LeftUp" }, // Opposite directions: Right Up -> Left Up
-        { "LeftDown", "RightDown" }, // Opposite directions: Left Down -> Right Down
-        { "RightDown", "LeftDown" }, // Opposite directions: Right Down -> Left Down
-        { "Up", "Down" }, // Opposite directions: Up -> Down
-        { "Down", "Up" } // Opposite directions: Down -> Up
+        { "LeftUp", "RightUp" }, 
+        { "RightUp", "LeftUp" }, 
+        { "LeftDown", "RightDown" }, 
+        { "RightDown", "LeftDown" }, 
+        { "Up", "Down" }, 
+        { "Down", "Up" }
     };
 
-    private Dictionary<ConnectionPoint, List<GameObject>> triedPresets = new Dictionary<ConnectionPoint, List<GameObject>>(); // Tracks tried presets for each connection point
+    private Dictionary<ConnectionPoint, List<GameObject>> triedPresets = new Dictionary<ConnectionPoint, List<GameObject>>(); 
 
     void Start()
     {
-        // Start the level generation process when the game starts
         GenerateLevel();
     }
 
     void GenerateLevel()
     {
-        // Place the initial room first
         PlaceStarterRoom();
 
-        int totalRoomsGenerated = 1; // Start with the initial room already placed
+        int totalRoomsGenerated = 1; 
 
-        // Generate intermediate rooms
         while (totalRoomsGenerated < numberOfRooms && connectionPoints.Count > 0)
         {
-            // Select a random connection point to expand from
             int connectionIndex = Random.Range(0, connectionPoints.Count);
             ConnectionPoint currentConnectionPoint = connectionPoints[connectionIndex];
             connectionPoints.RemoveAt(connectionIndex);
 
             bool roomPlaced = false;
             int attempts = 0;
-            const int maxAttempts = 100; // Maximum attempts to place a room and avoid infinite loop
+            const int maxAttempts = 100; 
 
-            triedPresets[currentConnectionPoint] = new List<GameObject>(); // Initialize the tried presets list for this connection point
+            triedPresets[currentConnectionPoint] = new List<GameObject>(); 
 
             while (!roomPlaced && attempts < maxAttempts)
             {
@@ -65,25 +64,21 @@ public class LevelGenerator : MonoBehaviour
                 if (triedPresets[currentConnectionPoint].Contains(preset))
                 {
                     Destroy(preset);
-                    continue; // Skip if this preset has already been tried for this connection point
+                    continue; 
                 }
 
                 triedPresets[currentConnectionPoint].Add(preset);
-                Debug.Log($"Attempting to place preset: {preset.name} at connection point: {currentConnectionPoint.direction}");
 
-                
-                
                 if (PositionPreset(preset, currentConnectionPoint))
                 {
                     roomPlaced = true;
-                    generatedRooms.Add(preset); // Add the placed room to the generated rooms list
+                    generatedRooms.Add(preset); 
                     totalRoomsGenerated++;
                 }
                 else
                 {
                     Destroy(preset);
                 }
-                
             }
 
             if (!roomPlaced)
@@ -94,13 +89,18 @@ public class LevelGenerator : MonoBehaviour
 
             if (totalRoomsGenerated >= numberOfRooms)
             {
-                Debug.Log($"Total number of rooms reached: {totalRoomsGenerated}");
                 break;
             }
         }
 
-        // Place the end room(s)
         PlaceEndRooms();
+
+        // Check if the number of rooms generated meets the minimum requirement
+        if (totalRoomsGenerated < minimumRooms)
+        {
+            Debug.LogError($"Only {totalRoomsGenerated} rooms generated, which is less than the minimum required {minimumRooms}. Retrying generation.");
+            RetryGeneration();
+        }
     }
 
     void PlaceStarterRoom()
@@ -112,7 +112,7 @@ public class LevelGenerator : MonoBehaviour
         }
 
         GameObject starter = Instantiate(starterRoom);
-        starter.transform.position = Vector3.zero; // Place the starter room at the origin
+        starter.transform.position = Vector3.zero; 
 
         Transform connectionPointsContainer = starter.transform.Find("ConnectionPoints");
 
@@ -136,54 +136,85 @@ public class LevelGenerator : MonoBehaviour
             return;
         }
 
-        // Add the "RightDown" connection point of the starter room to the list
         connectionPoints.Add(new ConnectionPoint(connectionPointsDict["RightDown"].position, "RightDown"));
     }
 
     void PlaceEndRooms()
-{
-    if (endRooms == null || endRooms.Count == 0)
     {
-        Debug.LogError("End rooms list is not assigned or empty.");
-        return;
-    }
-
-    bool endRoomsPlaced = false;
-
-    // Try placing the end room(s) at any available connection point
-    for (int i = 0; i < connectionPoints.Count; i++)
-    {
-        ConnectionPoint connectionPoint = connectionPoints[i];
-
-        foreach (GameObject endRoomPrefab in endRooms)
+        if (endRooms == null || endRooms.Count == 0)
         {
-            GameObject end = Instantiate(endRoomPrefab);
-            Debug.Log($"Attempting to place end room prefab: {endRoomPrefab.name}");
+            Debug.LogError("End rooms list is not assigned or empty.");
+            return;
+        }
 
-            if (PositionPreset(end, connectionPoint))
+        bool endRoomsPlaced = false;
+        const int maxAttempts = 18; // Increased max attempts for placing end rooms
+
+        // Shuffle the end rooms list to randomize the order of selection
+        ShuffleEndRooms();
+
+        // Try placing the end room(s) at any available connection point
+        for (int i = 0; i < connectionPoints.Count; i++)
+        {
+            ConnectionPoint connectionPoint = connectionPoints[i];
+
+            // Track tried presets for this connection point
+            List<GameObject> triedPresets = new List<GameObject>();
+
+            int attempts = 0;
+
+            while (!endRoomsPlaced && attempts < maxAttempts)
             {
-                endRoomsPlaced = true;
-                Debug.Log($"End room prefab {endRoomPrefab.name} successfully placed at connection point {connectionPoint.direction}");
+                attempts++;
+
+                foreach (GameObject endRoomPrefab in endRooms)
+                {
+                    if (triedPresets.Contains(endRoomPrefab))
+                    {
+                        continue; // Skip if this preset has already been tried for this connection point
+                    }
+
+                    triedPresets.Add(endRoomPrefab);
+
+                    GameObject end = Instantiate(endRoomPrefab);
+                    Debug.Log($"Attempting to place end room prefab: {endRoomPrefab.name} at connection point: {connectionPoint.direction}");
+
+                    if (PositionPreset(end, connectionPoint))
+                    {
+                        endRoomsPlaced = true;
+                        Debug.Log($"End room prefab {endRoomPrefab.name} successfully placed at connection point {connectionPoint.direction}");
+                        break;
+                    }
+                    else
+                    {
+                        Destroy(end);
+                    }
+                }
+            }
+
+            if (endRoomsPlaced)
+            {
                 break;
             }
-            else
-            {
-                Destroy(end);
-            }
         }
 
-        if (endRoomsPlaced)
+        if (!endRoomsPlaced)
         {
-            break;
+            // Backtrack and attempt to place the end room from a previous room
+            BacktrackAndPlaceEndRoom();
         }
     }
 
-    if (!endRoomsPlaced)
+    void ShuffleEndRooms()
     {
-        // Backtrack and attempt to place the end room from a previous room
-        BacktrackAndPlaceEndRoom();
+        for (int i = 0; i < endRooms.Count; i++)
+        {
+            GameObject temp = endRooms[i];
+            int randomIndex = Random.Range(i, endRooms.Count);
+            endRooms[i] = endRooms[randomIndex];
+            endRooms[randomIndex] = temp;
+        }
     }
-}
 
 
     GameObject InstantiateRandomPreset()
@@ -226,18 +257,11 @@ public class LevelGenerator : MonoBehaviour
         preset.transform.position += offset;
 
         // Check for overlap
-        if (occupiedPositions.Contains(preset.transform.position))
+        if (IsOverlap(preset))
         {
-            Debug.Log($"Room overlap detected at position: {preset.transform.position} for prefab {preset.name}. Moving the room 1 unit forward in the direction of the overlap.");
-            MoveRoomForward(preset, targetDirection);
-
-            // Check for overlap again after moving the room forward once
-            if (occupiedPositions.Contains(preset.transform.position))
-            {
-                Debug.Log($"Room overlap detected after moving forward at position: {preset.transform.position} for prefab {preset.name}. Replacing the last room with a new room.");
-                ReplaceLastRoomWithAlternativeDirection(preset, currentConnectionPoint);
-                return false;
-            }
+            Debug.Log($"Room overlap detected at position: {preset.transform.position} for prefab {preset.name}. Replacing the last room with a new room.");
+            ReplaceLastRoomWithAlternativeDirection(preset, currentConnectionPoint);
+            return false;
         }
 
         // Ensure the connection is valid
@@ -264,9 +288,26 @@ public class LevelGenerator : MonoBehaviour
         occupiedPositions.Add(preset.transform.position);
 
         // Optionally spawn enemies in the room
-        SpawnEnemies(preset);
+        //SpawnEnemies(preset);
 
         return true;
+    }
+
+    bool IsOverlap(GameObject room)
+    {
+        // Check if the room position overlaps with any occupied positions
+        if (occupiedPositions.Contains(room.transform.position))
+        {
+            return true;
+        }
+
+        // Check overlap with the starter room, assuming the starter room is at Vector3.zero
+        if (room.transform.position == Vector3.zero)
+        {
+            return true;
+        }
+
+        return false;
     }
 
     bool IsValidConnection(string directionA, string directionB)
@@ -361,20 +402,40 @@ public class LevelGenerator : MonoBehaviour
             }
         }
 
-        Debug.LogError("Failed to place end room after backtracking.");
+        Debug.LogError("Failed to place end room after backtracking. Retrying generation.");
+        RetryGeneration();
     }
 
-    void SpawnEnemies(GameObject room)
+    void RetryGeneration()
     {
-        foreach (Transform child in room.transform)
+        // Clear existing generated rooms and occupied positions
+        foreach (GameObject room in generatedRooms)
         {
-            if (child.CompareTag("SpawnPoint"))
-            {
-                GameObject enemyPrefab = enemyPrefabs[Random.Range(0, enemyPrefabs.Count)];
-                Instantiate(enemyPrefab, child.position, Quaternion.identity);
-            }
+            Destroy(room);
         }
+        generatedRooms.Clear();
+        occupiedPositions.Clear();
+
+        // Reset connection points
+        connectionPoints.Clear();
+
+        // Reload the current scene
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
+
+    // Other existing methods and variables
+
+    // void SpawnEnemies(GameObject room)
+    // {
+    //     foreach (Transform child in room.transform)
+    //     {
+    //         if (child.CompareTag("SpawnPoint"))
+    //         {
+    //             GameObject enemyPrefab = enemyPrefabs[Random.Range(0, enemyPrefabs.Count)];
+    //             Instantiate(enemyPrefab, child.position, Quaternion.identity);
+    //         }
+    //     }
+    // }
 
     public class ConnectionPoint
     {
